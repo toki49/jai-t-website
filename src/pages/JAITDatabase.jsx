@@ -20,7 +20,7 @@ function JAITDatabase() {
 
   useEffect(() => {
     // Load CSV data
-    fetch('/jait-data.csv')
+    fetch('jait-data.csv')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
