@@ -1,8 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import './Header.css';
 
 function Header() {
   const location = useLocation();
+  const [jaitDropdownOpen, setJaitDropdownOpen] = useState(false);
+  const [contactDropdownOpen, setContactDropdownOpen] = useState(false);
+
+  const isJaiTActive = location.pathname === '/jai-t' || location.pathname === '/jai-t/taxonomy';
+  const isContactActive = location.pathname === '/contact' || location.pathname === '/contact/about';
 
   return (
     <header className="header">
@@ -20,24 +26,79 @@ function Header() {
           >
             Home
           </Link>
-          <Link 
-            to="/jai-t" 
-            className={`nav-link ${location.pathname === '/jai-t' ? 'active' : ''}`}
+          
+          <div 
+            className="nav-dropdown"
+            onMouseEnter={() => setJaitDropdownOpen(true)}
+            onMouseLeave={() => setJaitDropdownOpen(false)}
           >
-            JAI-T
-          </Link>
+            <Link 
+              to="/jai-t" 
+              className={`nav-link ${isJaiTActive ? 'active' : ''}`}
+            >
+              JAI-T
+            </Link>
+            {jaitDropdownOpen && (
+              <div 
+                className="dropdown-menu"
+                onMouseEnter={() => setJaitDropdownOpen(true)}
+                onMouseLeave={() => setJaitDropdownOpen(false)}
+              >
+                <Link 
+                  to="/jai-t" 
+                  className={`dropdown-item ${location.pathname === '/jai-t' ? 'active' : ''}`}
+                >
+                  JAI-T Table
+                </Link>
+                <Link 
+                  to="/jai-t/taxonomy" 
+                  className={`dropdown-item ${location.pathname === '/jai-t/taxonomy' ? 'active' : ''}`}
+                >
+                  Taxonomy
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link 
             to="/methodology" 
             className={`nav-link ${location.pathname === '/methodology' ? 'active' : ''}`}
           >
             Methodology
           </Link>
-          <Link 
-            to="/contact" 
-            className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+          
+          <div 
+            className="nav-dropdown"
+            onMouseEnter={() => setContactDropdownOpen(true)}
+            onMouseLeave={() => setContactDropdownOpen(false)}
           >
-            Contact
-          </Link>
+            <Link 
+              to="/contact" 
+              className={`nav-link ${isContactActive ? 'active' : ''}`}
+            >
+              Contact
+            </Link>
+            {contactDropdownOpen && (
+              <div 
+                className="dropdown-menu"
+                onMouseEnter={() => setContactDropdownOpen(true)}
+                onMouseLeave={() => setContactDropdownOpen(false)}
+              >
+                <Link 
+                  to="/contact" 
+                  className={`dropdown-item ${location.pathname === '/contact' ? 'active' : ''}`}
+                >
+                  Submit an Entry
+                </Link>
+                <Link 
+                  to="/contact/about" 
+                  className={`dropdown-item ${location.pathname === '/contact/about' ? 'active' : ''}`}
+                >
+                  About Evidence for Justice Lab
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </header>
@@ -45,4 +106,3 @@ function Header() {
 }
 
 export default Header;
-

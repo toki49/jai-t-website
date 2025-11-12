@@ -33,7 +33,8 @@
   color: #666;
 }
 
-.sector-badge {
+.sector-badge,
+.domain-badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
@@ -42,19 +43,39 @@
   color: white;
 }
 
-.sector-courts {
+.sector-courts,
+.domain-courts {
   background-color: #2d5016;
 }
 
-.sector-law-enforcement {
+.sector-law-enforcement,
+.domain-law-enforcement {
   background-color: #2d5016;
+}
+
+.domain-corrections {
+  background-color: #2d5016;
+}
+
+.table-link,
+.table-link-name {
+  color: #2d5016;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.table-link-name {
+  display: inline-block;
+}
+
+.table-link-name:hover {
+  color: #3a6820;
+  text-decoration: underline;
 }
 
 .table-link {
   display: inline-block;
   margin-left: 0.5rem;
-  color: #2d5016;
-  text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
 }

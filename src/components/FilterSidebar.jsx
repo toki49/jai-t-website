@@ -20,6 +20,7 @@ function FilterSidebar({ filters, onFilterChange }) {
   };
 
   const categories = [
+    'Back End Administration',
     'Backend Administration',
     'Detection',
     'Forensic Analysis',
@@ -29,10 +30,9 @@ function FilterSidebar({ filters, onFilterChange }) {
   ];
 
   const domains = [
-    'City',
-    'County',
-    'State',
-    'Federal'
+    'Courts',
+    'Law Enforcement',
+    'Corrections'
   ];
 
   const states = [

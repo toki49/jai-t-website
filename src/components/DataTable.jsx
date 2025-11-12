@@ -20,8 +20,8 @@ function DataTable({ data, columns, filters, onDownload }) {
           item.name,
           item.category,
           item.domain,
-          item.sector,
           item.state,
+          item.city || '',
           item.description,
           item.lastUpdated || ''
         ].join(' ').toLowerCase();
@@ -31,9 +31,11 @@ function DataTable({ data, columns, filters, onDownload }) {
         }
       }
 
-      // Filter by categories
+      // Filter by categories (handle comma-separated categories)
       if (filters.categories.length > 0) {
-        const itemCategories = Array.isArray(item.category) ? item.category : [item.category];
+        const itemCategories = item.category 
+          ? item.category.split(',').map(c => c.trim())
+          : [];
         if (!itemCategories.some(cat => filters.categories.includes(cat))) {
           return false;
         }

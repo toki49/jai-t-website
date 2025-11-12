@@ -1,13 +1,47 @@
 .contact-container {
   flex: 1;
-  padding: 3rem;
   background-color: #e0e4d7;
   min-height: calc(100vh - 200px);
+}
+
+.contact-tabs {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 3rem 0;
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #2d5016;
+}
+
+.contact-tab {
+  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: 'Times New Roman', 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: -2px;
+}
+
+.contact-tab:hover {
+  color: #333;
+  background-color: rgba(45, 80, 22, 0.05);
+}
+
+.contact-tab.active {
+  color: #2d5016;
+  border-bottom-color: #2d5016;
+  font-weight: 600;
 }
 
 .contact-main {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 3rem;
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -164,9 +198,9 @@
 
 .contact-info-section {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+  padding: 2rem 3rem;
   background: white;
-  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
