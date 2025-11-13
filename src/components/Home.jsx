@@ -23,7 +23,7 @@ function Home() {
         
         <div className="home-visualization">
           <iframe
-            src="https://datawrapper.dwcdn.net/1p5Fr/17/"
+            src="https://datawrapper.dwcdn.net/YbVsD/9/"
             title="JAI-T Data Visualization"
             className="datawrapper-iframe"
             frameBorder="2"
