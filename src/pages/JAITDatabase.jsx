@@ -54,16 +54,15 @@ function JAITDatabase() {
 
   const handleDownload = (dataToDownload) => {
     // Convert data to CSV format
-    const headers = ['Technology Name', 'State', 'City', 'Domain', 'Category', 'Description', 'Last Updated'];
+    const headers = ['Name', 'City', 'State','Domain', 'Category', 'Last Searched'];
     const csvRows = [
       headers.join(','),
       ...dataToDownload.map(row => [
         `"${(row.name || '').replace(/"/g, '""')}"`,
-        `"${(row.state || '').replace(/"/g, '""')}"`,
         `"${(row.city || '').replace(/"/g, '""')}"`,
+        `"${(row.state || '').replace(/"/g, '""')}"`,
         `"${(row.domain || '').replace(/"/g, '""')}"`,
         `"${(row.category || '').replace(/"/g, '""')}"`,
-        `"${(row.description || '').replace(/"/g, '""')}"`,
         `"${(row.lastUpdated || '').replace(/"/g, '""')}"`
       ].join(','))
     ];
@@ -117,12 +116,12 @@ function JAITDatabase() {
       },
     },
     {
-      accessorKey: 'state',
-      header: 'State',
-    },
-    {
       accessorKey: 'city',
       header: 'City',
+    },
+    {
+      accessorKey: 'state',
+      header: 'State',
     },
     {
       accessorKey: 'domain',
@@ -140,11 +139,6 @@ function JAITDatabase() {
     {
       accessorKey: 'category',
       header: 'Category',
-    },
-    {
-      accessorKey: 'description',
-      header: 'Description',
-      cell: info => <span className="description-text">{info.getValue()}</span>,
     },
     {
       accessorKey: 'lastUpdated',
