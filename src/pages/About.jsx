@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1 className="about-title">About Evidence for Justice Lab</h1>
+        <h1 className="about-title">Evidence for Justice Lab</h1>
         
         <div className="about-section">
           <h2>Our Mission</h2>

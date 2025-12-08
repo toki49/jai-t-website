@@ -36,7 +36,7 @@ function Header() {
               to="/jai-t" 
               className={`nav-link ${isJaiTActive ? 'active' : ''}`}
             >
-              JAI-T
+              Database
             </Link>
             {jaitDropdownOpen && (
               <div 
@@ -56,16 +56,17 @@ function Header() {
                 >
                   Taxonomy
                 </Link>
-              </div>
-            )}
-          </div>
-
+                
           <Link 
             to="/methodology" 
-            className={`nav-link ${location.pathname === '/methodology' ? 'active' : ''}`}
+            className={`dropdown-item ${location.pathname === '/methodology' ? 'active' : ''}`}
           >
             Methodology
           </Link>
+              </div>
+
+            )}
+          </div>
           
           <div 
             className="nav-dropdown"

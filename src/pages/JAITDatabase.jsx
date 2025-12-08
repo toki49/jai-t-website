@@ -101,7 +101,7 @@ function JAITDatabase() {
   const columns = useMemo(() => [
     {
       accessorKey: 'name',
-      header: "Technology's Name",
+      header: "Name",
       cell: info => {
         const name = info.getValue();
         const link = info.row.original.link;
@@ -142,7 +142,7 @@ function JAITDatabase() {
     },
     {
       accessorKey: 'lastUpdated',
-      header: 'Last Updated',
+      header: 'Last Searched',
       cell: info => {
         const date = info.getValue();
         if (!date) return '-';

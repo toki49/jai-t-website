@@ -8,7 +8,7 @@ function Footer() {
           <p className="footer-text">Georgetown University</p>
           <p className="footer-text">Evidence for Justice Lab</p>
           <p className="footer-text">125 E St. NW Washington, DC 20001</p>
-          <p className="footer-text">evidenceforjusticelab@gmail.com</p>
+          <p className="footer-text">evidenceforjustice@georgetown.edu</p>
         </div>
         <div className="footer-separator"></div>
         <div className="footer-right">
