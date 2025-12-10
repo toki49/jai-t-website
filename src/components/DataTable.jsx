@@ -11,6 +11,40 @@ import './DataTable.css';
 
 function DataTable({ data, columns, filters, onDownload }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    affiliation: ''
+  });
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleDownloadClick = () => {
+    setShowModal(true);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Here you could send formData to your backend/analytics
+    console.log('Download requested by:', formData);
+    onDownload(filteredData);
+    setShowModal(false);
+    // Reset form
+    setFormData({ name: '', email: '', affiliation: '' });
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setFormData({ name: '', email: '', affiliation: '' });
+  };
+
   const filteredData = useMemo(() => {
     return data.filter(item => {
       // Search filter
@@ -76,7 +110,7 @@ function DataTable({ data, columns, filters, onDownload }) {
 
   return (
     <div className="data-table-container">
-      <div className="table-controls">
+      <div className="data-table-controls">
         <div className="search-container">
           <input
             type="text"
@@ -86,11 +120,6 @@ function DataTable({ data, columns, filters, onDownload }) {
             className="search-input"
           />
         </div>
-        {onDownload && (
-          <button onClick={() => onDownload(filteredData)} className="download-btn">
-            Download CSV
-          </button>
-        )}
       </div>
       <div className="table-wrapper">
         <table className="data-table">
@@ -155,9 +184,68 @@ function DataTable({ data, columns, filters, onDownload }) {
         </button>
       </div>
       
-      <div className="table-info">
-        Showing {filteredData.length} of {data.length} entries
+      <div className="table-bottom">
+        <div className="table-info">
+          Showing {filteredData.length} of {data.length} entries
+        </div>
+        {onDownload && (
+          <button onClick={handleDownloadClick} className="download-btn">
+            Download CSV
+          </button>
+        )}
       </div>
+
+      {showModal && (
+        <div className="modal-overlay" onClick={handleCloseModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={handleCloseModal}>&times;</button>
+            <h2 className="modal-title">Download CSV</h2>
+            <p className="modal-description">Please provide your information to download the data:</p>
+            <form onSubmit={handleFormSubmit} className="modal-form">
+              <div className="modal-form-group">
+                <label htmlFor="name">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleFormChange}
+                  required
+                />
+              </div>
+              <div className="modal-form-group">
+                <label htmlFor="email">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
+                />
+              </div>
+              <div className="modal-form-group">
+                <label htmlFor="affiliation">Affiliation/Organization</label>
+                <input
+                  type="text"
+                  id="affiliation"
+                  name="affiliation"
+                  value={formData.affiliation}
+                  onChange={handleFormChange}
+                />
+              </div>
+              <div className="modal-buttons">
+                <button type="button" onClick={handleCloseModal} className="modal-cancel-btn">
+                  Cancel
+                </button>
+                <button type="submit" className="modal-submit-btn">
+                  Download
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

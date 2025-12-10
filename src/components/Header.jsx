@@ -15,8 +15,8 @@ function Header() {
       <div className="header-content">
         <Link to="/" className="header-left-link">
           <div className="header-left">
-            <h1 className="site-title">Evidence for Justice Lab</h1>
-            <h2 className="site-subtitle">Justice and AI Tracker</h2>
+            <h1 className="site-title">Justice and AI Tracker</h1>
+            <h2 className="site-subtitle">The Evidence for Justice Lab</h2>
           </div>
         </Link>
         <nav className="header-nav">
@@ -68,6 +68,13 @@ function Header() {
             )}
           </div>
           
+          <Link 
+            to="/insights" 
+            className={`nav-link ${location.pathname === '/insights' ? 'active' : ''}`}
+          >
+            Insights
+          </Link>
+          
           <div 
             className="nav-dropdown"
             onMouseEnter={() => setContactDropdownOpen(true)}
@@ -86,16 +93,16 @@ function Header() {
                 onMouseLeave={() => setContactDropdownOpen(false)}
               >
                 <Link 
-                  to="/contact" 
-                  className={`dropdown-item ${location.pathname === '/contact' ? 'active' : ''}`}
-                >
-                  Submit an Entry
-                </Link>
-                <Link 
                   to="/contact/about" 
                   className={`dropdown-item ${location.pathname === '/contact/about' ? 'active' : ''}`}
                 >
                   About Evidence for Justice Lab
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className={`dropdown-item ${location.pathname === '/contact' ? 'active' : ''}`}
+                >
+                  Submit an Entry
                 </Link>
               </div>
             )}

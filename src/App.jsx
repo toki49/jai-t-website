@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import JAITDatabase from './pages/JAITDatabase';
 import Methodology from './pages/Methodology';
+import Insights from './pages/Insights';
 import Contact from './pages/Contact';
 import './App.css';
 
@@ -16,7 +17,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jai-t" element={<JAITDatabase />} />
           <Route path="/jai-t/taxonomy" element={<JAITDatabase />} />
+          <Route path="/jai-t/methodology" element={<JAITDatabase />} />
           <Route path="/methodology" element={<Methodology />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/about" element={<Contact />} />
         </Routes>

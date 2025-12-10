@@ -18,7 +18,7 @@
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   color: #666;
@@ -56,7 +56,7 @@
 }
 
 .contact-form-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -76,14 +76,14 @@
 }
 
 .form-group label {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #333;
 }
 
 .form-hint {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 0.85rem;
   color: #666;
   margin: 0;
@@ -96,7 +96,7 @@
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
   transition: border-color 0.2s;
@@ -125,7 +125,7 @@
 }
 
 .form-question {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #333;
@@ -142,7 +142,7 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
 }
@@ -160,7 +160,7 @@
   color: white;
   border: none;
   border-radius: 4px;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -182,7 +182,7 @@
 }
 
 .submission-criteria-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -190,10 +190,51 @@
 }
 
 .criteria-content {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
+}
+
+.criteria-item {
+  margin-bottom: 2rem;
+}
+
+.criteria-item:last-child {
+  margin-bottom: 0;
+}
+
+.criteria-item h3 {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.75rem 0;
+}
+
+.criteria-item p {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.criteria-item ul {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding: 0;
+}
+
+.criteria-item li {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.criteria-item li:last-child {
+  margin-bottom: 0;
 }
 
 .contact-info-section {
@@ -207,7 +248,7 @@
 }
 
 .contact-info-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
@@ -215,7 +256,7 @@
 }
 
 .contact-info-content {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
 }

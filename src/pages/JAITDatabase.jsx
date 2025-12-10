@@ -3,13 +3,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import DataTable from '../components/DataTable';
 import Taxonomy from './Taxonomy';
+import Methodology from './Methodology';
 import { parseCSVData } from '../utils/csvParser';
 import './JAITDatabase.css';
 
 function JAITDatabase() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [viewMode, setViewMode] = useState('table'); // 'table' or 'taxonomy'
+  const [viewMode, setViewMode] = useState('table'); // 'table', 'taxonomy', or 'methodology'
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -84,6 +85,8 @@ function JAITDatabase() {
   useEffect(() => {
     if (location.pathname === '/jai-t/taxonomy') {
       setViewMode('taxonomy');
+    } else if (location.pathname === '/jai-t/methodology') {
+      setViewMode('methodology');
     } else {
       setViewMode('table');
     }
@@ -93,6 +96,8 @@ function JAITDatabase() {
     setViewMode(tab);
     if (tab === 'taxonomy') {
       navigate('/jai-t/taxonomy');
+    } else if (tab === 'methodology') {
+      navigate('/jai-t/methodology');
     } else {
       navigate('/jai-t');
     }
@@ -203,20 +208,36 @@ function JAITDatabase() {
         >
           Taxonomy
         </button>
+        <button
+          className={`jait-tab ${viewMode === 'methodology' ? 'active' : ''}`}
+          onClick={() => handleTabChange('methodology')}
+        >
+          Methodology
+        </button>
       </div>
 
       {viewMode === 'taxonomy' ? (
         <Taxonomy />
+      ) : viewMode === 'methodology' ? (
+        <Methodology />
       ) : (
-        <div className="main-content">
-          <FilterSidebar filters={filters} onFilterChange={handleFilterChange} />
-          <DataTable 
-            data={data} 
-            columns={columns} 
-            filters={filters}
-            onDownload={handleDownload}
-          />
-        </div>
+        <>
+          <div className="about-data-section">
+            <h2 className="about-data-title">About the Data</h2>
+            <p className="about-data-text">
+              The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system. The database is composed of qualitative information found from news articles, reports, and publications, and captures instances of cities that have procured, piloted, or deployed AI-based tools over time.
+            </p>
+          </div>
+          <div className="main-content">
+            <FilterSidebar filters={filters} onFilterChange={handleFilterChange} />
+            <DataTable 
+              data={data} 
+              columns={columns} 
+              filters={filters}
+              onDownload={handleDownload}
+            />
+          </div>
+        </>
       )}
     </div>
   );

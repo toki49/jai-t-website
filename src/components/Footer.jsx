@@ -4,15 +4,22 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-left">
-          <p className="footer-text">Georgetown University</p>
-          <p className="footer-text">Evidence for Justice Lab</p>
-          <p className="footer-text">125 E St. NW Washington, DC 20001</p>
-          <p className="footer-text">evidenceforjustice@georgetown.edu</p>
+        <div className="footer-section">
+          <div className="footer-line"></div>
+          <p className="footer-description">
+            The <a href="https://mccourt.georgetown.edu/evidence-for-justice-lab/" target="_blank" rel="noopener noreferrer">Evidence for Justice Lab</a> is a research and policy hub at Georgetown University's McCourt School of Public Policy. The Lab's mission is to create a more effective and fair approach to safety and justice through evidence and research. We accomplish this by engaging communities, collaborating with government partners and conducting applied research to pave the way for a more just future.
+          </p>
         </div>
-        <div className="footer-separator"></div>
-        <div className="footer-right">
-          {/* <p className="footer-text">jal.toom</p> */}
+        
+        <div className="footer-section footer-contact-section">
+          <div className="footer-line"></div>
+          <div className="footer-contact-wrapper">
+            <h3 className="footer-heading">Contact</h3>
+            <div className="footer-contact-details">
+              <a href="mailto:evidenceforjustice@georgetown.edu" className="footer-link">Email</a>
+              <a href="https://www.linkedin.com/company/evidence-for-justice-lab/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
+            </div>
+          </div>
         </div>
       </div>
       <div className="footer-bottom">
