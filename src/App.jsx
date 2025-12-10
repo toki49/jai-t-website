@@ -3,9 +3,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import JAITDatabase from './pages/JAITDatabase';
+import Insights from './pages/Insights';
 import Methodology from './pages/Methodology';
 import Contact from './pages/Contact';
 import './App.css';
+import Taxonomy from './pages/Taxonomy';
 
 function App() {
   return (
@@ -15,8 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/jai-t" element={<JAITDatabase />} />
-          <Route path="/jai-t/taxonomy" element={<JAITDatabase />} />
-          <Route path="/methodology" element={<Methodology />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/jai-t/taxonomy" element={<Taxonomy />} />
+          <Route path="/jai-t/methodology" element={<Methodology />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/about" element={<Contact />} />
         </Routes>

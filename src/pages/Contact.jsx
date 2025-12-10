@@ -75,7 +75,7 @@ function Contact() {
           className={`contact-tab ${activeTab === 'about' ? 'active' : ''}`}
           onClick={() => handleTabChange('about')}
         >
-          About Evidence for Justice Lab
+          Evidence for Justice Lab
         </button>
       </div>
 

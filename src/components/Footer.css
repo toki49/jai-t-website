@@ -1,5 +1,5 @@
 .footer {
-  background-color: #8b7360;
+  background-color: #011e41;
   color: white;
   padding: 2rem 3rem;
   margin-top: auto;
@@ -13,6 +13,24 @@
   gap: 2rem;
 }
 
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .footer-logo {
+    height: 45px;
+  }
+}
 .footer-left {
   display: flex;
   flex-direction: column;

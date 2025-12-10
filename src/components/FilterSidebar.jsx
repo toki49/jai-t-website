@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './FilterSidebar.css';
 
-function FilterSidebar({ filters, onFilterChange }) {
+function FilterSidebar({ filters, onFilterChange, availableStates = [] }) {
   const [expanded, setExpanded] = useState({
     categories: true,
     domain: false,
@@ -21,10 +21,9 @@ function FilterSidebar({ filters, onFilterChange }) {
 
   const categories = [
     'Back End Administration',
-    'Backend Administration',
     'Detection',
     'Forensic Analysis',
-    'Front End Service',
+    'Front End Support',
     'Prediction',
     'Surveillance'
   ];
@@ -35,18 +34,7 @@ function FilterSidebar({ filters, onFilterChange }) {
     'Corrections'
   ];
 
-  const states = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
-    'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-    'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-    'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-    'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
-    'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-    'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
-    'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
-    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
+  // REMOVED the hardcoded states array - now using availableStates prop instead
 
   return (
     <aside className="filter-sidebar">
@@ -110,16 +98,20 @@ function FilterSidebar({ filters, onFilterChange }) {
         </button>
         {expanded.state && (
           <div className="filter-options">
-            {states.map(state => (
-              <label key={state} className="filter-option">
-                <input
-                  type="checkbox"
-                  checked={filters.state.includes(state)}
-                  onChange={() => handleCheckboxChange('state', state)}
-                />
-                <span>{state}</span>
-              </label>
-            ))}
+            {availableStates.length > 0 ? (
+              availableStates.map(state => (
+                <label key={state} className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={filters.state.includes(state)}
+                    onChange={() => handleCheckboxChange('state', state)}
+                  />
+                  <span>{state}</span>
+                </label>
+              ))
+            ) : (
+              <p className="no-data">No states available</p>
+            )}
           </div>
         )}
       </div>
@@ -128,4 +120,3 @@ function FilterSidebar({ filters, onFilterChange }) {
 }
 
 export default FilterSidebar;
-

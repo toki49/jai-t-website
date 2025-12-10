@@ -5,18 +5,23 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-          <p className="footer-text">Georgetown University</p>
-          <p className="footer-text">Evidence for Justice Lab</p>
-          <p className="footer-text">125 E St. NW Washington, DC 20001</p>
-          <p className="footer-text">evidenceforjustice@georgetown.edu</p>
+          <img 
+          src="/footerlogo.png" 
+          alt="Evidence for Justice Lab Logo" 
+          className="footer-logo"
+        />
         </div>
         <div className="footer-separator"></div>
         <div className="footer-right">
-          {/* <p className="footer-text">jal.toom</p> */}
+          <p className="footer-text">Home</p>
+          <p className="footer-text">Database</p>
+          <p className="footer-text">Contact</p>
+          <p className="footer-text">Evidence for Justice Lab</p>
+
         </div>
       </div>
       <div className="footer-bottom">
-        <p className="footer-copyright">© 2025 Powered and Secured by Evidence for Justice Lab</p>
+          <p className="footer-text">evidenceforjustice@georgetown.edu</p>
       </div>
     </footer>
   );

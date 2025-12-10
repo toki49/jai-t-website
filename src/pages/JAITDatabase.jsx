@@ -3,32 +3,51 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import DataTable from '../components/DataTable';
 import Taxonomy from './Taxonomy';
+import Methodology from './Methodology';
+import DownloadModal from '../components/DownloadModal';
+import Insights from './Insights';
 import { parseCSVData } from '../utils/csvParser';
 import './JAITDatabase.css';
 
 function JAITDatabase() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [viewMode, setViewMode] = useState('table'); // 'table' or 'taxonomy'
+  const [viewMode, setViewMode] = useState('table');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [filters, setFilters] = useState({
     categories: [],
     domain: [],
     state: []
   });
 
+  // Extract unique states from the data
+  const availableStates = useMemo(() => {
+    const stateSet = new Set();
+    data.forEach(row => {
+      if (row.state && row.state.trim()) {
+        stateSet.add(row.state.trim());
+      }
+    });
+    return Array.from(stateSet).sort();
+  }, [data]);
+
   useEffect(() => {
-    // Load CSV data
-    fetch('/jait-data.csv')
+    const url = `/jait-data.csv?t=${Date.now()}`;
+    console.debug('Fetching CSV from', url);
+    fetch(url, { cache: 'no-store' })
       .then(response => {
+        console.debug('CSV fetch status', response.status);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.text();
       })
       .then(csvText => {
+        console.debug('Loaded CSV (first 300 chars):', csvText.slice(0, 300));
         const parsedData = parseCSVData(csvText);
+        console.debug('Parsed rows count:', parsedData.length, 'sample:', parsedData.slice(0, 2));
         setData(parsedData);
         setLoading(false);
       })
@@ -52,12 +71,26 @@ function JAITDatabase() {
     });
   };
 
-  const handleDownload = (dataToDownload) => {
-    // Convert data to CSV format
+  const handleDownloadRequest = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleDownload = (contactInfo) => {
+    // Log contact info (you can send this to your backend/analytics)
+    console.log('Download requested by:', contactInfo);
+    
+    // You could send this to your backend here:
+    // fetch('/api/track-download', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(contactInfo)
+    // });
+
+    // Proceed with actual download
     const headers = ['Name', 'City', 'State','Domain', 'Category', 'Last Searched'];
     const csvRows = [
       headers.join(','),
-      ...dataToDownload.map(row => [
+      ...data.map(row => [
         `"${(row.name || '').replace(/"/g, '""')}"`,
         `"${(row.city || '').replace(/"/g, '""')}"`,
         `"${(row.state || '').replace(/"/g, '""')}"`,
@@ -80,22 +113,8 @@ function JAITDatabase() {
     document.body.removeChild(link);
   };
 
-  // Get view mode from URL - update when location changes
-  useEffect(() => {
-    if (location.pathname === '/jai-t/taxonomy') {
-      setViewMode('taxonomy');
-    } else {
-      setViewMode('table');
-    }
-  }, [location.pathname]);
-
   const handleTabChange = (tab) => {
     setViewMode(tab);
-    if (tab === 'taxonomy') {
-      navigate('/jai-t/taxonomy');
-    } else {
-      navigate('/jai-t');
-    }
   };
 
   const columns = useMemo(() => [
@@ -146,7 +165,6 @@ function JAITDatabase() {
       cell: info => {
         const date = info.getValue();
         if (!date) return '-';
-        // Handle MM/DD/YYYY format
         if (date.includes('/')) {
           const dateParts = date.split('/');
           if (dateParts.length === 3) {
@@ -157,7 +175,6 @@ function JAITDatabase() {
             return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
           }
         }
-        // Handle YYYY-MM-DD format
         const dateObj = new Date(date);
         if (!isNaN(dateObj.getTime())) {
           return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -190,6 +207,12 @@ function JAITDatabase() {
 
   return (
     <div className="jait-database">
+      <DownloadModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onDownload={handleDownload}
+      />
+      
       <div className="jait-tabs">
         <button
           className={`jait-tab ${viewMode === 'table' ? 'active' : ''}`}
@@ -203,18 +226,30 @@ function JAITDatabase() {
         >
           Taxonomy
         </button>
+        <button
+          className={`jait-tab ${viewMode === 'methodology' ? 'active' : ''}`}
+          onClick={() => handleTabChange('methodology')}
+        >
+          Methodology
+        </button>
       </div>
 
       {viewMode === 'taxonomy' ? (
         <Taxonomy />
+      ) : viewMode === 'methodology' ? (
+        <Methodology />
       ) : (
         <div className="main-content">
-          <FilterSidebar filters={filters} onFilterChange={handleFilterChange} />
+          <FilterSidebar 
+            filters={filters} 
+            onFilterChange={handleFilterChange}
+            availableStates={availableStates}
+          />
           <DataTable 
             data={data} 
             columns={columns} 
             filters={filters}
-            onDownload={handleDownload}
+            onDownload={handleDownloadRequest}
           />
         </div>
       )}

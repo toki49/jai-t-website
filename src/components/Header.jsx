@@ -57,17 +57,24 @@ function Header() {
                   Taxonomy
                 </Link>
                 
-          <Link 
-            to="/methodology" 
-            className={`dropdown-item ${location.pathname === '/methodology' ? 'active' : ''}`}
-          >
-            Methodology
-          </Link>
+                <Link 
+                  to="/methodology" 
+                  className={`dropdown-item ${location.pathname === '/methodology' ? 'active' : ''}`}
+                >
+                  Methodology
+                </Link>
               </div>
-
             )}
           </div>
-          
+
+          {/* Top-level Insights nav link */}
+          <Link 
+            to="/insights" 
+            className={`nav-link ${location.pathname === '/insights' ? 'active' : ''}`}
+          >
+            Insights
+          </Link>
+
           <div 
             className="nav-dropdown"
             onMouseEnter={() => setContactDropdownOpen(true)}
@@ -95,7 +102,7 @@ function Header() {
                   to="/contact/about" 
                   className={`dropdown-item ${location.pathname === '/contact/about' ? 'active' : ''}`}
                 >
-                  About Evidence for Justice Lab
+                  Evidence for Justice Lab
                 </Link>
               </div>
             )}
