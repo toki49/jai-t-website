@@ -203,13 +203,6 @@ function Contact() {
           </div>
         </div>
       )}
-
-      <div className="contact-info-section">
-        <h2 className="contact-info-title">Get In Touch With Us</h2>
-        <div className="contact-info-content">
-          <p><strong>Email:</strong> EvidenceForJusticeLab@gmail.com</p>
-        </div>
-      </div>
     </div>
   );
 }

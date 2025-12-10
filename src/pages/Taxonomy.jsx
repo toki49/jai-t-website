@@ -10,7 +10,7 @@ function Taxonomy() {
         </p>
         
         <div className="taxonomy-section">
-          <h2>Data Collection Methodology</h2>
+          <h2>Summary </h2>
           <p>
             Content explaining the taxonomy and data collection process will be added here.
           </p>

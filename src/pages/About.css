@@ -1,7 +1,7 @@
 .about-container {
   flex: 1;
   padding: 3rem;
-  background-color: #e0e4d7;
+  background-color: #f5f5f0;
   min-height: calc(100vh - 200px);
   max-width: 1400px;
   margin: 0 auto;

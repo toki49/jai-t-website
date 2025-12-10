@@ -9,6 +9,15 @@ import Insights from './Insights';
 import { parseCSVData } from '../utils/csvParser';
 import './JAITDatabase.css';
 
+const categoryDefinitions = {
+  "Back End Administration": "AI systems that support internal operations like reporting, documentation, or database management.",
+  "Detection": "Tools identifying patterns, objects, or events such as gunshot detection or license plate recognition.",
+  "Forensic Analysis": "AI that analyzes evidence including images, biometrics, or digital forensic data.",
+  "Front End Service": "AI systems that directly interact with the public, like chatbots or online portals.",
+  "Prediction": "Systems forecasting risk, hotspots, recidivism, or resource demands.",
+  "Surveillance": "AI used for real-time monitoring, video analysis, or sensor-based tracking.",
+};
+
 function JAITDatabase() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -155,10 +164,34 @@ function JAITDatabase() {
         );
       },
     },
-    {
-      accessorKey: 'category',
-      header: 'Category',
-    },
+{
+  accessorKey: 'category',
+  header: 'Category',
+  cell: info => {
+    const raw = info.getValue();
+    if (!raw) return '-';
+
+    const categories = raw
+      .split(',')
+      .map(c => c.trim())
+      .filter(Boolean);
+
+    return (
+      <div className="category-cell">
+        {categories.map((cat, i) => (
+          <div
+            key={i}
+            className="category-item"
+            data-tooltip={categoryDefinitions[cat] || "No definition available"}
+          >
+            {cat}
+          </div>
+        ))}
+      </div>
+    );
+  }
+},
+
     {
       accessorKey: 'lastUpdated',
       header: 'Last Searched',
@@ -207,6 +240,11 @@ function JAITDatabase() {
 
   return (
     <div className="jait-database">
+      <div className="jait-header-text">
+      <h1 className="jait-title">About the Data (JAI-T)</h1>
+      <h2 className="jait-subtitle">The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system. The database is composed of qualitative information found from news articles, reports, and publications, and captures instances of cities that have procured, piloted, or deployed AI-based tools over time.  
+</h2>
+      </div>
       <DownloadModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -253,6 +291,7 @@ function JAITDatabase() {
           />
         </div>
       )}
+      
     </div>
   );
 }

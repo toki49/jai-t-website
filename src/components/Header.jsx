@@ -58,7 +58,7 @@ function Header() {
                 </Link>
                 
                 <Link 
-                  to="/methodology" 
+                  to="/jai-t/methodology" 
                   className={`dropdown-item ${location.pathname === '/methodology' ? 'active' : ''}`}
                 >
                   Methodology

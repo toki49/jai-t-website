@@ -49,7 +49,7 @@
 .modal-title {
   margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
-  color: #2d5016;
+  color: #5f9ae2;
 }
 
 .modal-description {
@@ -86,7 +86,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #4a7c2c;
+  border-color: #5f9ae2;
 }
 
 .form-group input.error {
@@ -115,10 +115,11 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  background-color: #011e41;
 }
 
 .btn-cancel {
-  background-color: #f0f0f0;
+  background-color: #011e41;
   color: #333;
 }
 
@@ -127,12 +128,12 @@
 }
 
 .btn-download {
-  background-color: #4a7c2c;
+  background-color: #011e41;
   color: white;
 }
 
 .btn-download:hover {
-  background-color: #3a6222;
+  background-color: #5f9ae2;
 }
 
 @media (max-width: 600px) {
