@@ -1,3 +1,23 @@
+/* Force all table text to obey your palette */
+.jait-database table,
+.jait-database td,
+.jait-database th,
+.jait-database .table-link-name {
+  color: #011e41 !important;
+}
+
+/* Fix category badges if they were overridden */
+.category-item {
+  color: #011e41 !important;
+  border: 1px solid #011e41 !important;
+}
+
+/* Fix domain badges turning green */
+.domain-badge {
+  background-color: #011e41 !important;
+  color: white !important;
+}
+
 .jait-database {
   flex: 1;
   background-color: #f5f5f0;
@@ -66,7 +86,7 @@
 
 .jait-tab:hover {
   color: #333;
-  background-color: rgba(45, 80, 22, 0.05);
+  background-color:rgba(1, 30, 65, 0.08); 
 }
 
 .jait-tab.active {

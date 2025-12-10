@@ -16,6 +16,7 @@ const categoryDefinitions = {
   "Front End Service": "AI systems that directly interact with the public, like chatbots or online portals.",
   "Prediction": "Systems forecasting risk, hotspots, recidivism, or resource demands.",
   "Surveillance": "AI used for real-time monitoring, video analysis, or sensor-based tracking.",
+  "N/A" : "At the time of search, research assistants couldn't find application of any AI powered tools",
 };
 
 function JAITDatabase() {
