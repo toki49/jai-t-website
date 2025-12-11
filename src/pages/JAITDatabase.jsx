@@ -242,7 +242,7 @@ function JAITDatabase() {
   return (
     <div className="jait-database">
       <div className="jait-header-text">
-      <h1 className="jait-title">About the Data (JAI-T)</h1>
+      <h1 className="jait-title">(JAI-T)</h1>
       <h2 className="jait-subtitle">The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system. The database is composed of qualitative information found from news articles, reports, and publications, and captures instances of cities that have procured, piloted, or deployed AI-based tools over time.  
 </h2>
       </div>

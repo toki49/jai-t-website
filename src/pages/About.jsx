@@ -1,35 +1,70 @@
+import { useState } from 'react';
 import './About.css';
 
 function About() {
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "Why did you make this?",
+      answer: "The Evidence for Justice Lab created this tracker to provide transparency and accountability regarding the use of AI technologies in justice systems across the United States."
+    },
+    {
+      question: "Why now?",
+      answer: "AI adoption in justice systems is accelerating rapidly, making it critical to document and understand these implementations before they become widespread without proper scrutiny."
+    }
+  ];
+
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1 className="about-title">Evidence for Justice Lab</h1>
+        <h1 className="about-title">About Us</h1>
         
         <div className="about-section">
           <h2>Our Mission</h2>
           <p>
-            The Evidence for Justice Lab is a research and policy hub established within the McCourt School of Public Policy at Georgetown University. The Evidence for Justice Lab’s mission is to create a more effective and fair approach to safety and justice through evidence and research. We accomplish this by engaging communities, collaborating with government partners and conducting applied research to pave the way for a more just future.
+            The <a href="https://mccourt.georgetown.edu/evidence-for-justice-lab/" target="_blank" rel="noopener noreferrer">Evidence for Justice Lab</a> is a research and policy hub established within the McCourt School of Public Policy at Georgetown University. The Evidence for Justice Lab’s mission is to create a more effective and fair approach to safety and justice through evidence and research. We accomplish this by engaging communities, collaborating with government partners and conducting applied research to pave the way for a more just future.
 We lead with curiosity and creativity. We approach our research through Evidence, Fairness, Voices, and Collaboration. By relying on our four pillars, we seek to redefine what constitutes evidence in the justice sector, incorporating both empirical data and lived experience.
-
+To learn more about the E4J Lab, please visit our website: [insert link]
           </p>
         </div>
 
         <div className="about-section">
-          <h2>Our Work</h2>
-          <p>
-            If you are a research partner, government organization or a student interested in getting involved with the Lab, we would love to hear from you. 
-
-          </p>
+          <h2>Frequently Asked Questions</h2>
+          <div className="faq-container">
+            {faqs.map((faq, index) => (
+              <div key={index} className="faq-item">
+                <button 
+                  className={`faq-question ${openFAQ === index ? 'active' : ''}`}
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <span className="faq-icon">{openFAQ === index ? '▼' : '▶'}</span>
+                  {faq.question}
+                </button>
+                {openFAQ === index && (
+                  <div className="faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="about-section">
-          <h2>Contact Information</h2>
+          <h2>Get Involved</h2>
           <p>
-            <strong>Email:</strong> EvidenceForJusticeLab@gmail.com
+            If you are a research partner, government organization, or a student interested in getting involved with the Lab, we would love to hear from you!
           </p>
           <p>
-            <strong>Address:</strong> 125 E St. NW Washington, DC 20001
+            <strong>Email:</strong> EvidenceForJusticeLab@georgetown.edu
+          </p>
+          <p>
+            <strong>Connect with us:</strong> <a href="https://www.linkedin.com/company/evidence-for-justice-lab/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -38,4 +73,3 @@ We lead with curiosity and creativity. We approach our research through Evidence
 }
 
 export default About;
-

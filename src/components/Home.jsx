@@ -4,6 +4,16 @@ function Home() {
   return (
     <div className="home-container">
       <div className="home-content">
+                <div className="home-visualization">
+          <iframe
+            src="https://datawrapper.dwcdn.net/YbVsD/9/"
+            title="JAI-T Data Visualization"
+            className="datawrapper-iframe"
+            frameBorder="2"
+            scrolling="no"
+            allowFullScreen
+          />
+        </div>
         <div className="home-text">
           <h1 className="home-title">Evidence for Justice Lab: JAI-T</h1>
           <h2 className="home-subtitle">Dynamic Limited Data Set Tracker JAI-T</h2>
@@ -23,7 +33,7 @@ function Home() {
           </div>
         </div>
         
-        <div className="home-visualization">
+        {/* <div className="home-visualization">
           <iframe
             src="https://datawrapper.dwcdn.net/YbVsD/9/"
             title="JAI-T Data Visualization"
@@ -32,7 +42,7 @@ function Home() {
             scrolling="no"
             allowFullScreen
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

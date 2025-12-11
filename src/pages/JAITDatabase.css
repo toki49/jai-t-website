@@ -113,7 +113,7 @@
 
 .jait-title {
   font-family: 'Times New Roman', 'Georgia', serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #333;
   margin: 0 0 0.5rem 0;
@@ -121,9 +121,9 @@
 
 .jait-subtitle {
   font-family: 'Times New Roman', 'Georgia', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #555;
+  font-size: 1.1rem;
+  font-weight: 200;
+  color: #0b0b0b;
   margin: 0 0 1.5rem 0;
 }
 

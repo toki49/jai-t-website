@@ -1,8 +1,9 @@
 .contact-container {
   flex: 1;
-  background-color: #f5f5f0;
+  background-color: #f5f5f0; /* clean cream, no green tint */
   min-height: calc(100vh - 200px);
 }
+
 
 .contact-tabs {
   max-width: 1400px;
@@ -10,7 +11,7 @@
   padding: 2rem 3rem 0;
   display: flex;
   gap: 1rem;
-  border-bottom: 2px solid #011e41;
+  border-bottom: 2px solid #5f9ae2;
 }
 
 .contact-tab {
@@ -18,7 +19,7 @@
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   color: #666;
@@ -33,8 +34,8 @@
 }
 
 .contact-tab.active {
-  color: #011e41;
-  border-bottom-color: #011e41;
+  color: #5f9ae2 ;
+  border-bottom-color: #5f9ae2;
   font-weight: 600;
 }
 
@@ -53,11 +54,10 @@
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  order: 2;
 }
 
 .contact-form-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -77,14 +77,14 @@
 }
 
 .form-group label {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #333;
 }
 
 .form-hint {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 0.85rem;
   color: #666;
   margin: 0;
@@ -97,7 +97,7 @@
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
   transition: border-color 0.2s;
@@ -126,7 +126,7 @@
 }
 
 .form-question {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #333;
@@ -143,7 +143,7 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
 }
@@ -152,16 +152,16 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #2d5016;
+  accent-color: #e0e0e0;
 }
 
 .submit-btn {
   padding: 1rem 2rem;
-  background-color: #4a7c30;
+  background-color: #5f9ae2;
   color: white;
   border: none;
   border-radius: 4px;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -171,7 +171,7 @@
 }
 
 .submit-btn:hover {
-  background-color: #3a6820;
+  background-color: rgb(216, 216, 35) ;
 }
 
 .submission-criteria-section {
@@ -180,11 +180,10 @@
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  order: 1;
 }
 
 .submission-criteria-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -192,10 +191,51 @@
 }
 
 .criteria-content {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
+}
+
+.criteria-item {
+  margin-bottom: 2rem;
+}
+
+.criteria-item:last-child {
+  margin-bottom: 0;
+}
+
+.criteria-item h3 {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.75rem 0;
+}
+
+.criteria-item p {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.criteria-item ul {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding: 0;
+}
+
+.criteria-item li {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.criteria-item li:last-child {
+  margin-bottom: 0;
 }
 
 .contact-info-section {
@@ -209,7 +249,7 @@
 }
 
 .contact-info-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
@@ -217,7 +257,7 @@
 }
 
 .contact-info-content {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1rem;
   color: #333;
 }
@@ -235,12 +275,6 @@
     padding: 2rem 1.5rem;
   }
 }
-@media (max-width: 1024px) {
-  .contact-form-section,
-  .submission-criteria-section {
-    order: initial;
-  }
-}
 
 @media (max-width: 768px) {
   .contact-form-section,
@@ -253,4 +287,3 @@
     font-size: 1.5rem;
   }
 }
-
