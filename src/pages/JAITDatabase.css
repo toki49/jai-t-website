@@ -75,7 +75,7 @@
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   color: #666;
@@ -100,7 +100,7 @@
   justify-content: center;
   align-items: center;
   min-height: 400px;
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.2rem;
   color: #666;
 }
@@ -112,7 +112,7 @@
 }
 
 .jait-title {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #333;
@@ -120,7 +120,7 @@
 }
 
 .jait-subtitle {
-  font-family: 'Times New Roman', 'Georgia', serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.1rem;
   font-weight: 200;
   color: #0b0b0b;

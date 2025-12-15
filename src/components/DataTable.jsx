@@ -86,11 +86,6 @@ function DataTable({ data, columns, filters, onDownload }) {
             className="search-input"
           />
         </div>
-        {onDownload && (
-          <button onClick={() => onDownload(filteredData)} className="download-btn">
-            Download CSV
-          </button>
-        )}
       </div>
       <div className="table-wrapper">
         <table className="data-table">
@@ -136,28 +131,38 @@ function DataTable({ data, columns, filters, onDownload }) {
       </div>
       
       <div className="table-pagination">
-        <button
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-          className="pagination-btn"
-        >
-          Previous
-        </button>
-        <span className="pagination-info">
-          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-        </span>
-        <button
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          className="pagination-btn"
-        >
-          Next
-        </button>
+        <div className="pagination-controls">
+          <button
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            className="pagination-btn"
+          >
+            Previous
+          </button>
+          <span className="pagination-info">
+            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+          </span>
+          <button
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            className="pagination-btn"
+          >
+            Next
+          </button>
+        </div>
       </div>
       
       <div className="table-info">
         Showing {filteredData.length} of {data.length} entries
       </div>
+      
+      {onDownload && (
+        <div className="download-container">
+          <button onClick={() => onDownload(filteredData)} className="download-btn">
+            Download CSV
+          </button>
+        </div>
+      )}
     </div>
   );
 }

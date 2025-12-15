@@ -1,29 +1,33 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import About from './About';
+import FAQ from './FAQ';
 import './Contact.css';
 
 function Contact() {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState(
-    location.pathname === '/contact' || location.pathname === '/contact/about' ? 'about' : 'submit'
-  );
-
   const navigate = useNavigate();
+  
+  // Determine active tab based on route
+  const getActiveTab = () => {
+    if (location.pathname === '/contact/about') return 'about';
+    if (location.pathname === '/contact/faq') return 'faq';
+    return 'submit';
+  };
+  
+  const [activeTab, setActiveTab] = useState(getActiveTab());
 
   // Update tab when route changes
   useEffect(() => {
-    if (location.pathname === '/contact/about' || location.pathname === '/contact') {
-      setActiveTab('about');
-    } else {
-      setActiveTab('submit');
-    }
+    setActiveTab(getActiveTab());
   }, [location.pathname]);
 
   const handleTabChange = (tab) => {
-    setActiveTab(tab);
     if (tab === 'about') {
       navigate('/contact/about');
+    } else if (tab === 'faq') {
+      navigate('/contact/faq');
     } else {
       navigate('/contact');
     }
@@ -49,17 +53,43 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your submission! We will review it shortly.');
-    setFormData({
-      fullName: '',
-      email: '',
-      phone: '',
-      domain: '',
-      additionalInfo: '',
-      articleLink: '',
-      aiTaskForce: ''
-    });
+    
+    // EmailJS configuration - Replace these with your actual values
+    const serviceId = 'service_9j2x407';  // Get from EmailJS dashboard
+    const templateId = 'template_ygz9ced';  // Get from EmailJS dashboard
+    const publicKey = 'TuBuPBcdF9zZd2Haw';  // Get from EmailJS dashboard
+    
+    // Prepare template parameters
+    const templateParams = {
+      from_name: formData.fullName,
+      from_email: formData.email,
+      phone: formData.phone || 'Not provided',
+      domain: formData.domain,
+      additional_info: formData.additionalInfo || 'No additional information provided',
+      article_link: formData.articleLink || 'No link provided',
+      ai_taskforce: formData.aiTaskForce || 'Not specified',
+      submission_date: new Date().toLocaleString()
+    };
+    
+    // Send email
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('Thank you for your submission! We will review it shortly.');
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          domain: '',
+          additionalInfo: '',
+          articleLink: '',
+          aiTaskForce: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Email sending failed:', error);
+        alert('There was an error submitting your form. Please try again or contact us directly at evidenceforjustice@georgetown.edu');
+      });
   };
 
   return (
@@ -69,7 +99,13 @@ function Contact() {
           className={`contact-tab ${activeTab === 'about' ? 'active' : ''}`}
           onClick={() => handleTabChange('about')}
         >
-        Evidence for Justice Lab
+          About Us
+        </button>
+        <button
+          className={`contact-tab ${activeTab === 'faq' ? 'active' : ''}`}
+          onClick={() => handleTabChange('faq')}
+        >
+          FAQs
         </button>
         <button
           className={`contact-tab ${activeTab === 'submit' ? 'active' : ''}`}
@@ -79,9 +115,9 @@ function Contact() {
         </button>
       </div>
 
-      {activeTab === 'about' ? (
-        <About />
-      ) : (
+      {activeTab === 'about' && <About />}
+      {activeTab === 'faq' && <FAQ />}
+      {activeTab === 'submit' && (
         <div className="contact-main">
           <div className="submission-criteria-section">
             <h1 className="submission-criteria-title">Submission Criteria</h1>

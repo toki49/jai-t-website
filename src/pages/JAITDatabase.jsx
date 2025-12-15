@@ -1,9 +1,10 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import DataTable from '../components/DataTable';
 import Taxonomy from './Taxonomy';
 import Methodology from './Methodology';
+import Cite from './Cite';
 import DownloadModal from '../components/DownloadModal';
 import Insights from './Insights';
 import { parseCSVData } from '../utils/csvParser';
@@ -21,7 +22,6 @@ const categoryDefinitions = {
 
 function JAITDatabase() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState('table');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,6 +42,20 @@ function JAITDatabase() {
     });
     return Array.from(stateSet).sort();
   }, [data]);
+
+  // Handle hash-based routing
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash === 'taxonomy') {
+      setViewMode('taxonomy');
+    } else if (hash === 'methodology') {
+      setViewMode('methodology');
+    } else if (hash === 'citation') {
+      setViewMode('citation');
+    } else {
+      setViewMode('table');
+    }
+  }, [location.hash]);
 
   useEffect(() => {
     const url = `/jait-data.csv?t=${Date.now()}`;
@@ -242,7 +256,7 @@ function JAITDatabase() {
   return (
     <div className="jait-database">
       <div className="jait-header-text">
-      <h1 className="jait-title">(JAI-T)</h1>
+      <h1 className="jait-title">JAI-T Database</h1>
       <h2 className="jait-subtitle">The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system. The database is composed of qualitative information found from news articles, reports, and publications, and captures instances of cities that have procured, piloted, or deployed AI-based tools over time.  
 </h2>
       </div>
@@ -271,13 +285,15 @@ function JAITDatabase() {
         >
           Methodology
         </button>
+        <button
+          className={`jait-tab ${viewMode === 'citation' ? 'active' : ''}`}
+          onClick={() => handleTabChange('citation')}
+        >
+          Citation
+        </button>
       </div>
 
-      {viewMode === 'taxonomy' ? (
-        <Taxonomy />
-      ) : viewMode === 'methodology' ? (
-        <Methodology />
-      ) : (
+      {viewMode === 'table' && (
         <div className="main-content">
           <FilterSidebar 
             filters={filters} 
@@ -292,6 +308,10 @@ function JAITDatabase() {
           />
         </div>
       )}
+      
+      {viewMode === 'taxonomy' && <Taxonomy />}
+      {viewMode === 'methodology' && <Methodology />}
+      {viewMode === 'citation' && <Cite />}
       
     </div>
   );

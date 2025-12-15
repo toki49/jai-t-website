@@ -18,10 +18,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jai-t" element={<JAITDatabase />} />
           <Route path="/insights" element={<Insights />} />
-          <Route path="/jai-t/taxonomy" element={<Taxonomy />} />
-          <Route path="/jai-t/methodology" element={<Methodology />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/about" element={<Contact />} />
+          <Route path="/contact/faq" element={<Contact />} />
         </Routes>
         <Footer />
       </div>
