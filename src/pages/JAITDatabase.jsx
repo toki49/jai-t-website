@@ -14,7 +14,7 @@ const categoryDefinitions = {
   "Back End Administration": "Supports internal operations (ex: data management, documentation).",
   "Detection": "Identifies objects or events (ex: gunshot detection, license plate recognition).",
   "Forensic Analysis": "Analyzes evidence (ex: images, biometrics).",
-  "Front End Service": "Directly interacts with the public (ex: chatbots, online portals).",
+  "Front End Support": "Directly interacts with the public (ex: chatbots, online portals).",
   "Prediction": "Forecasts risk, hotspots, recidivism, or resource demands.",
   "Surveillance": "Real-time monitoring, video analysis, or sensor-based tracking.",
   "N/A" : "At the time of search, research assistants found no AI powered tools.",

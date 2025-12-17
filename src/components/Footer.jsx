@@ -6,7 +6,8 @@ function Footer() {
       <div className="footer-content">
         <div className="footer-left">
           <img 
-          src="/footerlogo.png" 
+          // src="./footerlogo.png"  
+          src={`${import.meta.env.BASE_URL}footerlogo.png`}
           alt="Evidence for Justice Lab Logo" 
           className="footer-logo"
         />
