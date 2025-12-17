@@ -11,24 +11,6 @@ import Contact from './pages/Contact';
 import './App.css';
 import Taxonomy from './pages/Taxonomy';
 
-// function App() {
-//   return (
-//     <Router>
-//       <div className="app">
-//         <Header />
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/jai-t" element={<JAITDatabase />} />
-//           <Route path="/insights" element={<Insights />} />
-//           <Route path="/contact" element={<Contact />} />
-//           <Route path="/contact/about" element={<Contact />} />
-//           <Route path="/contact/faq" element={<Contact />} />
-//         </Routes>
-//         <Footer />
-//       </div>
-//     </Router>
-//   );
-// }
 function App() {
   return (
     <div className="app">
