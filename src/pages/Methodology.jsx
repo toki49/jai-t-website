@@ -118,17 +118,40 @@ function Methodology() {
             </p>
             <div style={{ marginBottom: '1rem' }}></div>
             <p className="step-description">
-              As part of this final check, the second research team also applies the established Category <a href="/jai-t/taxonomy" style={{ color: '#8b7360', textDecoration: 'underline', fontWeight: 'bold' }}>taxonomy</a> to ensure each AI tool is classified correctly according to its function and operational purpose.
+              As part of this final check, the second research team also applies the established Category <a href="/jai-t/taxonomy" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }}>taxonomy</a> to ensure each AI tool is classified correctly according to its function and operational purpose.
             </p>
           </div>
         </div>
 
-        <div className="methodology-step" style={{ marginTop: '2rem', border: '2px solid #8b7360' }}>
+        <div className="disclaimer-box">
           <div className="step-content">
-            <h3 className="step-title">Disclaimers</h3>
-            <p className="step-description">
-              [Add your disclaimer content here]
-            </p>
+            <h3 className="step-title">DISCLAIMERS</h3>
+            <div className="disclaimer-list">
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Geographic Scope</h4>
+                <p className="disclaimer-item-body"> Currently, the Justice AI Tracker focuses on the Top 100 largest U.S. cities (ABC123 population data). County- or state-level AI initiatives are included only when the city itself is clearly using the technology. In cases where metropolitan regions share similar names, classification is limited to the city jurisdiction. </p>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Eligible Policy Areas</h4>
+                <p className="disclaimer-item-body">AI tools used in non-justice policy areas (e.g., housing, local government, transportation management) are excluded unless there is clear evidence that they directly support crime, safety, investigations, and/or enforcement.</p>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Organizational vs. Individual Use</h4>
+                <p className="disclaimer-item-body">We document AI use whether it is adopted organization-wide (e.g., the Dallas Police Department) or used by individual actors within an agency (e.g., AI applied in a Cincinnati lawyer’s deposition). Organizational use refers to tools formally deployed across a department or unit, while individual use reflects technologies utilized by specific personnel of the justice system rather than the agency as a whole.</p>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Pilot vs. Proposed Use</h4>
+                <p className="disclaimer-item-body">The Tracker offers a footprint of documented AI use and is not exhaustive nor representative of real-time deployment. Only confirmed pilot programs, either defined as verified implementations or scheduled plans to deploy an AI tool are included. Unconfirmed or speculative future uses are eliminated during step 5 of our methodology.</p>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Access to Sources</h4>
+                <p className="disclaimer-item-body">If a source link is no longer active, users should contact the publisher or access archived versions through the <a href="https://web.archive.org" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }} target="_blank" rel="noopener noreferrer">Wayback Machine</a>.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

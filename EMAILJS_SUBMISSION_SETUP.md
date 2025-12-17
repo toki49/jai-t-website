@@ -15,7 +15,7 @@ The submission form in Contact.jsx is now configured to send emails to **evidenc
 3. Click "Connect Account"
 4. Sign in with **evidenceforjustice@georgetown.edu**
 5. Grant permissions
-6. Copy your **Service ID** (looks like: `service_xxxxxxx`)
+6. Copy your **Service ID** (looks like: `service_9j2x407`)
 
 ### Step 3: Create Email Template
 1. Click "Email Templates" in the sidebar
@@ -122,12 +122,12 @@ The submission form in Contact.jsx is now configured to send emails to **evidenc
 ```
 
 4. Save the template
-5. Copy your **Template ID** (looks like: `template_xxxxxxx`)
+5. Copy your **Template ID** (looks like: `template_ygz9ced`)
 
 ### Step 4: Get Public Key
 1. Go to "Account" → "General"
 2. Find "Public Key" section
-3. Copy your **Public Key** (looks like: `xxxxxxxxxxxxxxx`)
+3. Copy your **Public Key** (looks like: `TuBuPBcdF9zZd2Haw`)
 
 ### Step 5: Update Contact.jsx
 1. Open `src/pages/Contact.jsx`
