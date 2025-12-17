@@ -11,13 +11,13 @@ import { parseCSVData } from '../utils/csvParser';
 import './JAITDatabase.css';
 
 const categoryDefinitions = {
-  "Back End Administration": "AI systems that support internal operations like reporting, documentation, or database management.",
-  "Detection": "Tools identifying patterns, objects, or events such as gunshot detection or license plate recognition.",
-  "Forensic Analysis": "AI that analyzes evidence including images, biometrics, or digital forensic data.",
-  "Front End Service": "AI systems that directly interact with the public, like chatbots or online portals.",
-  "Prediction": "Systems forecasting risk, hotspots, recidivism, or resource demands.",
-  "Surveillance": "AI used for real-time monitoring, video analysis, or sensor-based tracking.",
-  "N/A" : "At the time of search, research assistants couldn't find application of any AI powered tools",
+  "Back End Administration": "Supports internal operations (ex: data management, documentation).",
+  "Detection": "Identifies objects or events (ex: gunshot detection, license plate recognition).",
+  "Forensic Analysis": "Analyzes evidence (ex: images, biometrics).",
+  "Front End Service": "Directly interacts with the public (ex: chatbots, online portals).",
+  "Prediction": "Forecasts risk, hotspots, recidivism, or resource demands.",
+  "Surveillance": "Real-time monitoring, video analysis, or sensor-based tracking.",
+  "N/A" : "At the time of search, research assistants found no AI powered tools.",
 };
 
 function JAITDatabase() {
@@ -58,7 +58,8 @@ function JAITDatabase() {
   }, [location.hash]);
 
   useEffect(() => {
-    const url = `/jait-data.csv?t=${Date.now()}`;
+    // const url = `/jait-data.csv?t=${Date.now()}`;
+    const url = `${import.meta.env.BASE_URL}jait-data.csv?t=${Date.now()}`;
     console.debug('Fetching CSV from', url);
     fetch(url, { cache: 'no-store' })
       .then(response => {
