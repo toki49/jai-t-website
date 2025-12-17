@@ -21,6 +21,7 @@ function Taxonomy() {
           <p>
             Detailed definitions of each category used in the database will be provided here.
           </p>
+           <img src="./public/JAI-T Taxonomy.svg" alt="Visualization of taxonomy" width="950" height="700"></img>
         </div>
 
         <div className="taxonomy-section">
