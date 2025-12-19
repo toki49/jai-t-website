@@ -16,7 +16,6 @@ function Header() {
         <Link to="/" className="header-left-link">
           <div className="header-left">
             <h1 className="site-title">Evidence for Justice Lab</h1>
-            <h2 className="site-subtitle">Justice and AI Tracker</h2>
           </div>
         </Link>
         <nav className="header-nav">
@@ -48,7 +47,7 @@ function Header() {
                   to="/jai-t#table" 
                   className={`dropdown-item ${location.pathname === '/jai-t' && (!location.hash || location.hash === '#table') ? 'active' : ''}`}
                 >
-                  JAI-T Table
+                  Database
                 </Link>
                 <Link 
                   to="/jai-t#taxonomy" 

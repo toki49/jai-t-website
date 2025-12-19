@@ -24,7 +24,7 @@ function Insights() {
       <div className="insights-content">
         <h1 className="insights-title">Insights</h1>
         <p className="insights-description">
-          Coming soon...
+          Check back for more insights, and if you want to stay updated, sign up for our newsletter. 
         </p>
         
         <div className="insights-grid">

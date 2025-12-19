@@ -1,3 +1,42 @@
+.home-value-boxes {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-value-box {
+  background: white;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+  flex: 1 1 0;
+  min-width: 220px;
+}
+.home-value-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.7rem;
+}
+
+.home-value-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.home-value-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0a3d62;
+}
 .home-container {
   flex: 1;
   padding: 3rem;

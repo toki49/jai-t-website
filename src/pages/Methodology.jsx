@@ -13,7 +13,7 @@ function Methodology() {
         <div className="methodology-step">
           <div className="step-number">1</div>
           <div className="step-content">
-            <h3 className="step-title">Define Search Query & Identify Relevant Sources</h3>
+            <h3 className="step-c">Define Search Query & Identify Relevant Sources</h3>
             <p className="step-description">
               Research begins by generating <strong>targeted Google search queries</strong> tailored to each assigned city and its justice-system context. Using the structured search key, researchers input queries such as <em>"City, State Artificial Intelligence Law Enforcement"</em> and optional variants (e.g., <em>"law enforcement," "policing," "criminal justice"</em>).
             </p>
@@ -97,7 +97,6 @@ function Methodology() {
               <li><strong>Vendor or Name of Tech </strong> (if applicable)</li>
               <li><strong>Domain</strong> in which the tool operates (Law Enforcement, Courts, Corrections)</li>
               <li><strong>Direct link to the article</strong> and the <strong>Google search page</strong> where it appeared</li>
-              <li><strong>Additional related links</strong> that mention the same tool in the same location</li>
               <li><strong>APA citation</strong> for proper documentation and future reference</li>
             </ul>
             <div style={{ marginBottom: '1rem' }}></div>
@@ -129,27 +128,40 @@ function Methodology() {
             <div className="disclaimer-list">
               <div className="disclaimer-item">
                 <h4 className="disclaimer-item-title">Geographic Scope</h4>
-                <p className="disclaimer-item-body"> Currently, the Justice AI Tracker focuses on the Top 100 largest U.S. cities (ABC123 population data). County- or state-level AI initiatives are included only when the city itself is clearly using the technology. In cases where metropolitan regions share similar names, classification is limited to the city jurisdiction. </p>
-              </div>
-
-              <div className="disclaimer-item">
-                <h4 className="disclaimer-item-title">Eligible Policy Areas</h4>
-                <p className="disclaimer-item-body">AI tools used in non-justice policy areas (e.g., housing, local government, transportation management) are excluded unless there is clear evidence that they directly support crime, safety, investigations, and/or enforcement.</p>
+                <p className="disclaimer-item-body"> JAI-T focuses on the <a href="https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population" target="_blank" rel="noopener noreferrer" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }}>100 Largest U.S. Cities</a> list. Statewide or county-level initiatives are only included when there is clear evidence of use at the city level. For metropolitan areas with overlapping names, classifications apply strictly to the city jurisdiction, not the broader region.</p>
               </div>
 
               <div className="disclaimer-item">
                 <h4 className="disclaimer-item-title">Organizational vs. Individual Use</h4>
-                <p className="disclaimer-item-body">We document AI use whether it is adopted organization-wide (e.g., the Dallas Police Department) or used by individual actors within an agency (e.g., AI applied in a Cincinnati lawyer’s deposition). Organizational use refers to tools formally deployed across a department or unit, while individual use reflects technologies utilized by specific personnel of the justice system rather than the agency as a whole.</p>
+                <p className="disclaimer-item-body">The database tracks AI use within the criminal justice system regardless of whether the tool is operated by an agency as a whole or by individuals within that agency. </p>
               </div>
 
               <div className="disclaimer-item">
-                <h4 className="disclaimer-item-title">Pilot vs. Proposed Use</h4>
-                <p className="disclaimer-item-body">The Tracker offers a footprint of documented AI use and is not exhaustive nor representative of real-time deployment. Only confirmed pilot programs, either defined as verified implementations or scheduled plans to deploy an AI tool are included. Unconfirmed or speculative future uses are eliminated during step 5 of our methodology.</p>
+                <h4 className="disclaimer-item-title">Scope of Criminal Justice Use</h4>
+                <p className="disclaimer-item-body">Tools deployed primarily for non-criminal justice purposes (e.g., housing, transportation, or general traffic management) are excluded unless there is clear evidence they are used for crime, law enforcement, public safety, or legal enforcement purposes. In some cases, tools deployed by non-justice agencies are included when they replace or directly support traditional criminal justice functions.</p>
               </div>
 
               <div className="disclaimer-item">
-                <h4 className="disclaimer-item-title">Access to Sources</h4>
-                <p className="disclaimer-item-body">If a source link is no longer active, users should contact the publisher or access archived versions through the <a href="https://web.archive.org" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }} target="_blank" rel="noopener noreferrer">Wayback Machine</a>.</p>
+                <h4 className="disclaimer-item-title">Status of Use</h4>
+                <p className="disclaimer-item-body">Entries may reflect proposed, piloted, or deployed tools. Inclusion does not guarantee current or ongoing use. JAI-T represents a documented footprint of AI adoption, not an exhaustive or real-time inventory.</p>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Defining Artificial Intelligence</h4>
+                <p className="disclaimer-item-body">Most tools are included when sources explicitly reference “artificial intelligence,” or when inclusion is based on an informed assessment of the technology’s function and common usage. However, some widely discussed technologies are included, even when AI use within those technologies may vary depending on the city, such as:</p>
+                <ul className="disclaimer-bullet-list">
+                  <li>Facial recognition</li>
+                  <li>Gunshot detection systems</li>
+                  <li>Automated license plate readers (ALPRs)</li>
+                  <li>Body-worn camera footage review</li>
+                  <li>Predictive policing tools</li>
+                  <li>Real-time crime or intelligence centers</li>
+                </ul>
+              </div>
+
+              <div className="disclaimer-item">
+                <h4 className="disclaimer-item-title">Sources and Citations</h4>
+                <p className="disclaimer-item-body">JAI-T relies on publicly available sources. If a cited source is no longer accessible, users are encouraged to contact the original publisher or consult archived versions using web archiving tools like the <a href="https://web.archive.org" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }} target="_blank" rel="noopener noreferrer">Wayback Machine</a>.</p>
               </div>
             </div>
           </div>

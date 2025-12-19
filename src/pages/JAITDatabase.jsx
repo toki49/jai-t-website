@@ -272,7 +272,7 @@ function JAITDatabase() {
           className={`jait-tab ${viewMode === 'table' ? 'active' : ''}`}
           onClick={() => handleTabChange('table')}
         >
-          JAI-T Table
+          Database
         </button>
         <button
           className={`jait-tab ${viewMode === 'taxonomy' ? 'active' : ''}`}
