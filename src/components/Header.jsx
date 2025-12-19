@@ -15,6 +15,11 @@ function Header() {
       <div className="header-content">
         <Link to="/" className="header-left-link">
           <div className="header-left">
+            <img 
+              src={`${import.meta.env.BASE_URL}logo.svg`}
+              alt="Evidence for Justice Lab Logo" 
+              className="header-logo"
+            />
             <h1 className="site-title">Evidence for Justice Lab</h1>
           </div>
         </Link>
