@@ -123,12 +123,8 @@ function Contact() {
             <h1 className="submission-criteria-title">Submission Criteria</h1>
             <div className="criteria-content">
               <div className="criteria-item">
-                <p>
-
-If you know about an AI tool being used that we missed please submit an entry. 
-</p>
-                <p> 
-Two questions to think about is whether the technology is:</p>
+                <p>If you know about an AI tool being used that we missed please submit an entry.</p>
+                <p>Two questions to think about is whether the technology is:</p>
                 <ul>
                   <li>Used within the criminal justice system?</li>
                    <li>Explicitly mentions the use of artificial intelligence?</li>

@@ -10,9 +10,10 @@ function About() {
         <div className="about-section">
           <h2>Our Mission</h2>
           <p>
-            The <a href="https://mccourt.georgetown.edu/evidence-for-justice-lab/" target="_blank" rel="noopener noreferrer">Evidence for Justice Lab</a> is a research and policy hub established within the McCourt School of Public Policy at Georgetown University. The Evidence for Justice Lab’s mission is to create a more effective and fair approach to safety and justice through evidence and research. We accomplish this by engaging communities, collaborating with government partners and conducting applied research to pave the way for a more just future.
-We lead with curiosity and creativity. We approach our research through Evidence, Fairness, Voices, and Collaboration. By relying on our four pillars, we seek to redefine what constitutes evidence in the justice sector, incorporating both empirical data and lived experience.
-
+            The <a href="https://mccourt.georgetown.edu/evidence-for-justice-lab/" target="_blank" rel="noopener noreferrer">Evidence for Justice Lab</a> is a research and policy hub established within the McCourt School of Public Policy at Georgetown University. 
+          </p>
+          <p>Our mission is to create a more effective and fair approach to safety and justice through evidence and research. We accomplish this by engaging communities, collaborating with government partners and conducting applied research to pave the way for a more just future.</p>
+          <p>We lead with curiosity and creativity. We approach our research through <italic>Evidence, Fairness, Voices, and Collaboration</italic>. By relying on our four pillars, we seek to redefine what constitutes evidence in the justice sector, incorporating both empirical data and lived experience.
           </p>
         </div>
 
