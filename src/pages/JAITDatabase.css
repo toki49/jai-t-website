@@ -146,13 +146,12 @@
 }
 
 .jait-subtitle {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.1rem;
-  font-weight: 200;
-  color: #0b0b0b;
-  margin: 0 0 1.5rem 0;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 1.1rem 0;
 }
-
 
 .domain-badge {
   display: inline-block;
