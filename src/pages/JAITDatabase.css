@@ -9,33 +9,33 @@
 /* Fix category badges if they were overridden */
 .category-item {
   color: #011e41 !important;
-  border: 1px solid #011e41 !important;
+  border: 1px solid #0097b2 !important;
 }
 
- /* Base domain badge styling */
+/* Base domain badge styling */
 .domain-badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #333; /* Dark text for readability on yellow */
+  color: #333;
 }
 
 /* Light yellow for Courts */
 .domain-courts {
-  background-color: #665825 !important; /* Light yellow */
+  background-color: #665825 !important;
 }
 
 /* Medium yellow for Law Enforcement */
 .domain-law-enforcement {
-  background-color: #bb9f4b !important;; /* Medium yellow */
+  background-color: #bb9f4b !important;
 }
 
 /* Dark yellow for Corrections */
 .domain-corrections {
-  background-color: #CC9900 !important;; /* Dark yellow/gold */
-  color: white; /* White text on dark yellow */
+  background-color: #CC9900 !important;
+  color: white;
 }
 
 .jait-database {
@@ -147,7 +147,6 @@
   margin: 0 0 1.5rem 0;
 }
 
-
 .domain-badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
@@ -170,4 +169,3 @@
     font-size: 2rem;
   }
 }
-

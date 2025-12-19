@@ -159,7 +159,7 @@ function DataTable({ data, columns, filters, onDownload }) {
       {onDownload && (
         <div className="download-container">
           <button onClick={() => onDownload(filteredData)} className="download-btn">
-            Download CSV
+            Send me the CSV
           </button>
         </div>
       )}

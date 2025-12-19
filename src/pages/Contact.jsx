@@ -101,12 +101,12 @@ function Contact() {
         >
           About Us
         </button>
-        <button
+        {/* <button
           className={`contact-tab ${activeTab === 'faq' ? 'active' : ''}`}
           onClick={() => handleTabChange('faq')}
         >
           FAQs
-        </button>
+        </button> */}
         <button
           className={`contact-tab ${activeTab === 'submit' ? 'active' : ''}`}
           onClick={() => handleTabChange('submit')}
@@ -116,7 +116,7 @@ function Contact() {
       </div>
 
       {activeTab === 'about' && <About />}
-      {activeTab === 'faq' && <FAQ />}
+      {/* {activeTab === 'faq' && <FAQ />} */}
       {activeTab === 'submit' && (
         <div className="contact-main">
           <div className="submission-criteria-section">

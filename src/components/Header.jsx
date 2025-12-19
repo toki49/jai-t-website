@@ -108,12 +108,12 @@ function Header() {
                 >
                   About Us
                 </Link>
-                <Link 
+                {/* <Link 
                   to="/contact/faq" 
                   className={`dropdown-item ${location.pathname === '/contact/faq' ? 'active' : ''}`}
                 >
                   FAQs
-                </Link>
+                </Link> */}
                 <Link 
                   to="/contact" 
                   className={`dropdown-item ${location.pathname === '/contact' ? 'active' : ''}`}
