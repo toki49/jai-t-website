@@ -218,37 +218,6 @@ function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="phone">Phone</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="domain">Domain</label>
-                <p className="form-hint">Indicate the category the deployed AI tool falls under</p>
-                <select
-                  id="domain"
-                  name="domain"
-                  value={formData.domain}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select a domain</option>
-                  <option value="Backend Administration">Backend Administration</option>
-                  <option value="Detection">Detection</option>
-                  <option value="Forensic Analysis">Forensic Analysis</option>
-                  <option value="Front End Service">Front End Service</option>
-                  <option value="Prediction">Prediction</option>
-                  <option value="Surveillance">Surveillance</option>
-                </select>
-              </div>
-
-              <div className="form-group">
                 <label htmlFor="additionalInfo">Additional Information</label>
                 <textarea
                   id="additionalInfo"

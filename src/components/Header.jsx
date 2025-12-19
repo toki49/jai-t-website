@@ -23,7 +23,7 @@ function Header() {
             to="/" 
             className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
           >
-            Home
+            Map
           </Link>
           
           <div 
