@@ -13,7 +13,7 @@ function Methodology() {
         <div className="methodology-step">
           <div className="step-number">1</div>
           <div className="step-content">
-            <h3 className="step-c">Define Search Query & Identify Relevant Sources</h3>
+            <h3 className="step-title">Define Search Query & Identify Relevant Sources</h3>
             <p className="step-description">
               Research begins by generating <strong>targeted Google search queries</strong> tailored to each assigned city and its justice-system context. Using the structured search key, researchers input queries such as <em>"City, State Artificial Intelligence Law Enforcement"</em> and optional variants (e.g., <em>"law enforcement," "policing," "criminal justice"</em>).
             </p>
@@ -56,7 +56,7 @@ function Methodology() {
             </p>
             <div style={{ marginBottom: '1rem' }}></div>
             <p className="step-description">
-              "Future Use" of AI-driven tools are otherwise known as <strong>pilot programs</strong>. In this project/research, a pilot program differs from the potential use of a tool in that a pilot program is the confirmed implementation or confirmed plan to implement an AI tool into the law enforcement agency.
+              
             </p>
           </div>
         </div>
@@ -117,8 +117,11 @@ function Methodology() {
             </p>
             <div style={{ marginBottom: '1rem' }}></div>
             <p className="step-description">
-              As part of this final check, the second research team also applies the established Category <a href="/jai-t/taxonomy" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }}>taxonomy</a> to ensure each AI tool is classified correctly according to its function and operational purpose.
+              As part of this final check, the second research team also applies the established Category <a href="/jai-t-website/taxonomy" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }}>taxonomy</a> to ensure each AI tool is classified correctly according to its function and operational purpose.
+
             </p>
+            <p></p>
+            <p className="step-description">AI adoption in the criminal justice system is accelerating rapidly - updates to the tracker will be posted every 6 months.  </p>
           </div>
         </div>
 

@@ -20,7 +20,7 @@ function Header() {
               alt="Evidence for Justice Lab Logo" 
               className="header-logo"
             />
-            <h1 className="site-title">Evidence for Justice Lab</h1>
+            <h1 className="site-title">Justice and Artificial Intelligence Tracker</h1>
           </div>
         </Link>
         <nav className="header-nav">
@@ -40,7 +40,7 @@ function Header() {
               to="/jai-t" 
               className={`nav-link ${isJaiTActive ? 'active' : ''}`}
             >
-              Database
+              JAI-T
             </Link>
             {jaitDropdownOpen && (
               <div 

@@ -5,8 +5,8 @@ function Home() {
     <div className="home-container">
       <div className="home-content">
         <div className="home-text">
-          <h1 className="home-title">The Justice and Artificial Intelligence Tracker (JAI-T)</h1>
-          <h2 className="home-subtitle">Classifying real-world deployments of AI in the criminal justice system.</h2>
+          <h1 className="home-title">Classifying real-world deployments of AI in the criminal justice system.</h1>
+          <h2 className="home-subtitle"></h2>
         
         </div>
         
@@ -18,8 +18,8 @@ function Home() {
           </div>
           <div className="home-value-box">
             <div className="home-value-title">Application Count</div>
-            <div className="home-value-subtitle">Total number of AI recognized tools used in the Justice system</div>
-            <div className="home-value-number">250</div>
+            <div className="home-value-subtitle">Total number of AI tools found in the criminal justice system</div>
+            <div className="home-value-number">215</div>
           </div>
         </div>
 

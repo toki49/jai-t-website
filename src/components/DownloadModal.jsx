@@ -80,7 +80,7 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={handleClose}>&times;</button>
         
-        <h2 className="modal-title">Download JAI-T Database</h2>
+        <h2 className="modal-title">Retrieve JAI-T Database</h2>
         <p className="modal-description">
           Please provide your contact information to download the database.
         </p>
@@ -133,7 +133,7 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
               Cancel
             </button>
             <button type="submit" className="btn-download">
-              Download CSV
+              Submit Email
             </button>
           </div>
         </form>

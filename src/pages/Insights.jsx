@@ -5,15 +5,15 @@ function Insights() {
     {
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
       title: 'Tale of 100 Cities',
-      author: 'Tyler Johnson',
-      date: '01.15.2026',
+      author: 'Evidence for Justice Lab Team',
+      date: 'Coming soon...',
       link: '#'
     },
     {
       image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800',
-      title: 'Preliminary Findings and Patterns',
+      title: 'Defining AI in the Criminal Justice System',
       author: 'Evidence for Justice Lab Team',
-      date: '02.20.2026',
+      date: 'Coming soon...',
       link: '#'
     },
 
