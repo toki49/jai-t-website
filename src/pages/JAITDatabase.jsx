@@ -100,44 +100,6 @@ function JAITDatabase() {
     setIsModalOpen(true);
   };
 
-  const handleDownload = (contactInfo) => {
-    // Log contact info (you can send this to your backend/analytics)
-    console.log('Download requested by:', contactInfo);
-    
-    // You could send this to your backend here:
-    // fetch('/api/track-download', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(contactInfo)
-    // });
-
-    // Proceed with actual download
-    const headers = ['Name', 'City', 'State','Domain', 'Category', 'Last Searched'];
-    const csvRows = [
-      headers.join(','),
-      ...data.map(row => [
-        `"${(row.name || '').replace(/"/g, '""')}"`,
-        `"${(row.city || '').replace(/"/g, '""')}"`,
-        `"${(row.state || '').replace(/"/g, '""')}"`,
-        `"${(row.domain || '').replace(/"/g, '""')}"`,
-        `"${(row.category || '').replace(/"/g, '""')}"`,
-        `"${(row.lastUpdated || '').replace(/"/g, '""')}"`
-      ].join(','))
-    ];
-
-    const csvContent = csvRows.join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'jai-t-database.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const handleTabChange = (tab) => {
     setViewMode(tab);
   };
@@ -264,7 +226,6 @@ function JAITDatabase() {
       <DownloadModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onDownload={handleDownload}
       />
       
       <div className="jait-tabs">

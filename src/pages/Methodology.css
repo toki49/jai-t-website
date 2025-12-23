@@ -79,8 +79,16 @@
 .disclaimer-box .disclaimer-item-title {
   font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0 0 0.5rem 0;
+}
+
+.disclaimer-title {
+  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0 0 0.5rem 0;
+}
 }
 
 .disclaimer-box .disclaimer-item-body {
@@ -89,6 +97,7 @@
   font-size: 1.05rem;
   color: #333;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 /* Center the disclaimers header inside the disclaimer box */

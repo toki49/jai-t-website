@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import About from './About';
 import FAQ from './FAQ';
 import './Contact.css';
+
+// Initialize EmailJS here
+emailjs.init('TuBuPBcdF9zZd2Haw');
 
 function Contact() {
   const location = useLocation();
@@ -22,7 +25,7 @@ function Contact() {
   useEffect(() => {
     setActiveTab(getActiveTab());
   }, [location.pathname]);
-
+  
   const handleTabChange = (tab) => {
     if (tab === 'about') {
       navigate('/contact/about');
@@ -32,15 +35,14 @@ function Contact() {
       navigate('/contact');
     }
   };
-
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    phone: '',
-    domain: '',
     additionalInfo: '',
     articleLink: '',
-    aiTaskForce: ''
+    aiTaskForce: '',
+    submission_date: ''
   });
 
   const handleChange = (e) => {
@@ -53,43 +55,27 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // EmailJS configuration - Replace these with your actual values
-    const serviceId = 'service_9j2x407';  // Get from EmailJS dashboard
-    const templateId = 'template_ygz9ced';  // Get from EmailJS dashboard
-    const publicKey = 'TuBuPBcdF9zZd2Haw';  // Get from EmailJS dashboard
-    
-    // Prepare template parameters
-    const templateParams = {
-      from_name: formData.fullName,
-      from_email: formData.email,
-      phone: formData.phone || 'Not provided',
-      domain: formData.domain,
-      additional_info: formData.additionalInfo || 'No additional information provided',
-      article_link: formData.articleLink || 'No link provided',
-      ai_taskforce: formData.aiTaskForce || 'Not specified',
-      submission_date: new Date().toLocaleString()
-    };
-    
-    // Send email
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Email sent successfully!', response.status, response.text);
-        alert('Thank you for your submission! We will review it shortly.');
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          domain: '',
-          additionalInfo: '',
-          articleLink: '',
-          aiTaskForce: ''
-        });
-      })
-      .catch((error) => {
-        console.error('Email sending failed:', error);
-        alert('There was an error submitting your form. Please try again or contact us directly at evidenceforjustice@georgetown.edu');
+    // Set submission date in formData
+    setFormData(prev => ({ ...prev, submission_date: new Date().toLocaleString() }));
+    emailjs.sendForm(
+      'service_9j2x407',
+      'template_ygz9ced',
+      formRef.current,
+      'TuBuPBcdF9zZd2Haw'
+    ).then(() => {
+      alert('Thank you for submitting an entry! We appreciate your contribution.');
+      setFormData({
+        fullName: '',
+        email: '',
+        additionalInfo: '',
+        articleLink: '',
+        aiTaskForce: '',
+        submission_date: ''
       });
+    }, (error) => {
+      alert('Failed to send email. Please try again later.');
+      console.log(error);
+    });
   };
 
   return (
@@ -135,7 +121,7 @@ function Contact() {
 
           <div className="contact-form-section">
             <h1 className="contact-form-title">Submit an AI Deployed Tool</h1>
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="fullName">Full name</label>
                 <input
@@ -218,6 +204,7 @@ function Contact() {
     </div>
   );
 }
+
 
 export default Contact;
 

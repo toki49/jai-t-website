@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './DownloadModal.css';
 
+// Initialize EmailJS here
+emailjs.init('TuBuPBcdF9zZd2Haw');
+
 function DownloadModal({ isOpen, onClose, onDownload }) {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,7 +35,6 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     // Validate form
     const newErrors = {};
     if (!formData.name.trim()) {
@@ -44,23 +48,37 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
     if (!formData.organization.trim()) {
       newErrors.organization = 'Organization is required';
     }
-
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-
-    // Submit and download
-    onDownload(formData);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      organization: ''
+    // Use emailjs.sendForm to send the form DOM node
+    emailjs.sendForm(
+      'service_puyofwf',
+      'template_x1yd4mj',
+      formRef.current,
+      'TuBuPBcdF9zZd2Haw'
+    ).then(() => {
+      // Send data to Google Sheets via Apps Script Web App
+      fetch('https://script.google.com/macros/s/AKfycbxwFQP2O0Mx9mkkeW8LKaRHh0q7s-voR_qmfWbEk6zlVUrdTLeytKTT5_bKOnv3Gj5t/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'download_csv',
+          name: formData.name,
+          email: formData.email,
+          organization: formData.organization
+        })
+      });
+      alert('Thank you for showing interest in JAI-T! We will send you the jait-data.csv shortly.');
+      // Reset form
+      setFormData({ name: '', email: '', organization: '' });
+      setErrors({});
+      onClose();
+    }, (error) => {
+      alert('Failed to send email. Please try again later.');
+      console.log(error);
     });
-    setErrors({});
-    onClose();
   };
 
   const handleClose = () => {
@@ -85,7 +103,7 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
           Please provide your contact information to download the database.
         </p>
 
-        <form onSubmit={handleSubmit} className="download-form">
+        <form ref={formRef} onSubmit={handleSubmit} className="download-form">
           <div className="form-group">
             <label htmlFor="name">Name *</label>
             <input

@@ -3,14 +3,14 @@ import './Insights.css';
 function Insights() {
   const insightsData = [
     {
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
+      image: 'https://media.istockphoto.com/id/2173998291/photo/new-york-city-skyline-on-a-sunny-day.jpg?s=612x612&w=0&k=20&c=qmuoeOK8p9zoL9VsutewopcGBHiGEsBaVQd7uRgHvkw=',
       title: 'Tale of 100 Cities',
       author: 'Evidence for Justice Lab Team',
       date: 'Coming soon...',
       link: '#'
     },
     {
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800',
+      image: 'https://a.storyblok.com/f/198504/1754x1398/8df7ede424/screenshot-2024-06-06-at-9-23-35-am.png',
       title: 'Defining AI in the Criminal Justice System',
       author: 'Evidence for Justice Lab Team',
       date: 'Coming soon...',
