@@ -21,6 +21,20 @@ function Footer() {
       });
 
       if (response.ok) {
+        // Also record in Google Sheet
+        e.preventDefault();
+        fetch('https://script.google.com/macros/s/AKfycbxvWB_Kr4-RiSLOOrHQOxsN44Kqd3l4Ft8Pa4BizTdUsn_ab8J4QaT6Tgb6zG23mXB7/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            formType: 'newsletter',
+            email: email
+          }).toString()
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+
         setSubscribeStatus('Thanks for subscribing!');
         setEmail('');
         setTimeout(() => setSubscribeStatus(''), 3000);

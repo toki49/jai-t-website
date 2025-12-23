@@ -60,16 +60,21 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
       'TuBuPBcdF9zZd2Haw'
     ).then(() => {
       // Send data to Google Sheets via Apps Script Web App
-      fetch('https://script.google.com/macros/s/AKfycbxwFQP2O0Mx9mkkeW8LKaRHh0q7s-voR_qmfWbEk6zlVUrdTLeytKTT5_bKOnv3Gj5t/exec', {
+      e.preventDefault();
+      fetch('https://script.google.com/macros/s/AKfycbxvWB_Kr4-RiSLOOrHQOxsN44Kqd3l4Ft8Pa4BizTdUsn_ab8J4QaT6Tgb6zG23mXB7/exec', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
           formType: 'download_csv',
           name: formData.name,
           email: formData.email,
           organization: formData.organization
-        })
-      });
+        }).toString()
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err)); 
+
       alert('Thank you for showing interest in JAI-T! We will send you the jait-data.csv shortly.');
       // Reset form
       setFormData({ name: '', email: '', organization: '' });

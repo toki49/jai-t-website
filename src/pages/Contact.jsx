@@ -63,6 +63,25 @@ function Contact() {
       formRef.current,
       'TuBuPBcdF9zZd2Haw'
     ).then(() => {
+      // Send data to Google Sheets via Apps Script Web App
+      e.preventDefault();
+      fetch('https://script.google.com/macros/s/AKfycbxvWB_Kr4-RiSLOOrHQOxsN44Kqd3l4Ft8Pa4BizTdUsn_ab8J4QaT6Tgb6zG23mXB7/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          formType: 'submit_an_entry',
+          fullName: formData.fullName,
+          email: formData.email,
+          additionalInfo: formData.additionalInfo,
+          articleLink: formData.articleLink,
+          aiTaskForce: formData.aiTaskForce,
+          submission_date: formData.submission_date
+        }).toString()
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));  
+
       alert('Thank you for submitting an entry! We appreciate your contribution.');
       setFormData({
         fullName: '',
