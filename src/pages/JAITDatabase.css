@@ -1,178 +1,47 @@
-/* Force all table text to obey your palette */
-.jait-database table,
-.jait-database td,
-.jait-database th,
-.jait-database .table-link-name {
-  color: #011e41 !important;
-}
-
-.category-item {
-  background: #d4f1f4 !important; /* Light teal instead of #eef3ff */
-  padding: 4px 6px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  width: fit-content;
-  cursor: help;
-  position: relative;
-  color: #011e41 !important;
-  border: 1px solid #0097b2 !important;
-}
-
- /* Base domain badge styling */
-.domain-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #333; /* Dark text for readability on yellow */
-}
-
-/* Light yellow for Courts */
-.domain-courts {
-  background-color: #665825 !important; /* Light yellow */
-}
-
-/* Medium yellow for Law Enforcement */
-.domain-law-enforcement {
-  background-color: #bb9f4b !important;; /* Medium yellow */
-}
-
-/* Dark yellow for Corrections */
-.domain-corrections {
-  background-color: #d6c07e !important;; /* Dark yellow/gold */
-  color: white; /* White text on dark yellow */
-}
-
-.jait-database {
-  flex: 1;
-  background-color: #f5f5f0;
-  min-height: calc(100vh - 200px);
-}
-
-.jait-tabs {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 3rem 0;
-  display: flex;
-  gap: 1rem;
-  border-bottom: 2px solid #09093e;
-}
-
-.category-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.category-item {
-  background: #eef3ff;
-  padding: 4px 6px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  width: fit-content;
-  cursor: help;
-  position: relative;
-}
-
-.category-item::after {
+/* Tooltip for Category Definitions */
+.category-tooltip-trigger:hover::after {
   content: attr(data-tooltip);
-  display: none;
   position: absolute;
-  left: 105%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #111;
-  color: #fff;
-  padding: 6px 8px;
-  font-size: 0.75rem;
-  width: 180px;
-  border-radius: 6px;
-  white-space: normal;
-  z-index: 20;
-}
-
-.category-item:hover::after {
-  display: block;
-}
-
-.jait-tab {
-  padding: 1rem 2rem;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-bottom: -2px;
-}
-
-.jait-tab:hover {
-  color: #333;
-  background-color:rgba(1, 30, 65, 0.08); 
-}
-
-.jait-tab.active {
-  color: #011e41;
-  border-bottom-color: #5f9ae2;
-  font-weight: 600;
-}
-
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 1.2rem;
-  color: #666;
-}
-
-.jait-header-text {
-  max-width: 1400px;
-  margin: 2rem auto 1rem;
-  padding: 0 3rem;
-}
-
-.jait-title {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 0.5rem 0;
-}
-
-.jait-subtitle {
-  font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #333;
-  margin: 0 0 1.1rem 0;
-}
-
-.domain-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: white;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #011e41;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: normal;
+  width: 200px;
+  z-index: 1001;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  pointer-events: none;
 }
 
+/* Triangle for Tooltip */
+.category-tooltip-trigger:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #011e41 transparent transparent transparent;
+  z-index: 1001;
+}
+
+/* Global Table Text Correction */
+.jait-database table, 
+.jait-database table span, 
+.jait-database table div {
+  color: #011e41 !important;
+}
+
+/* Force horizontal scroll on iPad/Mobile */
 @media (max-width: 1024px) {
-  .jait-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 2rem 1.5rem 1rem;
-  }
-  
-  .jait-title {
-    font-size: 2rem;
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    width: 100%;
   }
 }
-

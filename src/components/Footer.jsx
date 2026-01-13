@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import './Footer.css';
 
 function Footer() {
   const linkedInUrl = "https://www.linkedin.com/company/evidence-for-justice-lab/";
@@ -10,7 +9,6 @@ function Footer() {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     
-    // Option 1: Using Formspree (replace YOUR_FORM_ID with your actual Formspree ID)
     try {
       const response = await fetch('https://formspree.io/f/xykgkzqy', {
         method: 'POST',
@@ -22,7 +20,6 @@ function Footer() {
 
       if (response.ok) {
         // Also record in Google Sheet
-        e.preventDefault();
         fetch('https://script.google.com/macros/s/AKfycbxvWB_Kr4-RiSLOOrHQOxsN44Kqd3l4Ft8Pa4BizTdUsn_ab8J4QaT6Tgb6zG23mXB7/exec', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -44,33 +41,34 @@ function Footer() {
     } catch (error) {
       setSubscribeStatus('Something went wrong. Please try again.');
     }
-
-    // Option 2: Direct email (simpler but shows in URL)
-    // window.location.href = `mailto:evidenceforjustice@georgetown.edu?subject=Newsletter Subscription&body=Please subscribe ${email} to the newsletter`;
   };
 
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-left">
+    <footer className="bg-[#011e41] text-white py-6 px-6 md:px-12 mt-auto">
+      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-8">
+        
+        {/* Footer Left - Logo */}
+        <div className="flex items-center md:order-1">
           <img 
             src={`${import.meta.env.BASE_URL}footerlogo.png`}
             alt="Evidence for Justice Lab Logo" 
-            className="footer-logo"
+            className="h-[120px] md:h-[120px] w-auto object-contain"
           />
         </div>
 
-        <div className="footer-middle">
-          <div className="footer-contact">
+        {/* Footer Middle - Social + Nav */}
+        <div className="flex flex-row md:flex-row items-center gap-6 md:gap-12 flex-1 justify-center md:order-2 w-full md:w-auto">
+          {/* Social Link */}
+          <div className="flex items-center gap-5">
             <a 
               href={linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="footer-social-link"
+              className="flex items-center text-white transition-opacity duration-200 hover:opacity-70"
               aria-label="LinkedIn"
             >
               <svg 
-                className="footer-linkedin-icon"
+                className="w-6 h-6"
                 viewBox="0 0 24 24" 
                 fill="currentColor"
               >
@@ -79,31 +77,60 @@ function Footer() {
             </a>
           </div>
 
-          <nav className="footer-nav">
-            <Link to="/" className="footer-link">Map</Link>
-            <Link to="/jai-t" className="footer-link">Database</Link>
-            <Link to="/insights" className="footer-link">Insights</Link>
-            <Link to="/contact/about" className="footer-link">Contact</Link>
+          {/* Navigation */}
+          <nav className="flex flex-row md:flex-row items-center gap-8 md:gap-7 sm:gap-4">
+            <Link 
+              to="/" 
+              className="font-['Source_Sans_3'] text-base text-white no-underline transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            >
+              Map
+            </Link>
+            <Link 
+              to="/jai-t" 
+              className="font-['Source_Sans_3'] text-base text-white no-underline transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            >
+              JAIT
+            </Link>
+            <Link 
+              to="/insights" 
+              className="font-['Source_Sans_3'] text-base text-white no-underline transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            >
+              Insights
+            </Link>
+            <Link 
+              to="/contact/about" 
+              className="font-['Source_Sans_3'] text-base text-white no-underline transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            >
+              Contact
+            </Link>
           </nav>
         </div>
 
-        <div className="footer-newsletter">
-          <p className="newsletter-title">Track AI. Track Justice. Stay Informed.</p>
-          <form onSubmit={handleSubscribe} className="newsletter-form">
+        {/* Footer Newsletter */}
+        <div className="flex flex-col gap-2 w-full md:max-w-[600px] md:order-3">
+          <p className="font-['Source_Sans_3'] italic text-sm font-semibold m-0 mb-1 text-white">
+            Track AI. Track Justice. Stay Informed.
+          </p>
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 w-full">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="newsletter-input"
+              className="flex-1 py-[0.65rem] px-4 border border-white/30 rounded bg-white/10 text-white font-['Source_Sans_3'] text-sm transition-all duration-200 focus:outline-none focus:border-[#0097b2] focus:bg-white/15 placeholder:text-white/60 w-full sm:w-auto"
               required
             />
-            <button type="submit" className="newsletter-button">
+            <button 
+              type="submit" 
+              className="py-[0.65rem] px-5 bg-[#0097b2] text-white border-none rounded font-['Source_Sans_3'] text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#007a8c] whitespace-nowrap w-full sm:w-auto"
+            >
               Subscribe
             </button>
           </form>
           {subscribeStatus && (
-            <p className="newsletter-status">{subscribeStatus}</p>
+            <p className="font-['Source_Sans_3'] text-[0.85rem] text-green-400 m-0">
+              {subscribeStatus}
+            </p>
           )}
         </div>
       </div>

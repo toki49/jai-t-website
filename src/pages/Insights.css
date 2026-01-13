@@ -93,8 +93,9 @@
 .insight-date {
   font-family: 'Source Sans 3', 'Inter', 'Helvetica', sans-serif;
   font-size: 0.9rem;
-  color: #888;
+  color: #0097b2;
   margin: 0;
+  font-weight: bold;
 }
 
 @media (max-width: 1200px) {

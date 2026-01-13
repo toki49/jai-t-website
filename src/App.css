@@ -1,18 +1,21 @@
+@import "tailwindcss";
+
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #f5f5f0;
+  overflow-x: hidden;
 }
 
 .main-content {
   flex: 1;
   display: flex;
-  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   gap: 2rem;
   padding: 2rem 0;
+  overflow-x: hidden;
 }
 
 .page-placeholder {
@@ -89,10 +92,10 @@
   font-size: 0.9rem;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1500px) {
   .main-content {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
   }
-}
+} */

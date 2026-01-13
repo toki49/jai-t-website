@@ -1,125 +1,112 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import './Header.css';
 
 function Header() {
   const location = useLocation();
-  const [jaitDropdownOpen, setJaitDropdownOpen] = useState(false);
-  const [contactDropdownOpen, setContactDropdownOpen] = useState(false);
+  
+  // Single state for each dropdown to handle both hover and click
+  const [jaitOpen, setJaitOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const isJaiTActive = location.pathname === '/jai-t' || location.pathname === '/jai-t/taxonomy';
   const isContactActive = location.pathname.startsWith('/contact');
 
+  const closeAll = () => {
+    setJaitOpen(false);
+    setContactOpen(false);
+  };
+
   return (
-    <header className="header">
-      <div className="header-content">
-        <Link to="/" className="header-left-link">
-          <div className="header-left">
+    <header className="bg-[#011e41] text-white py-4 md:py-6 px-4 md:px-8 border-b-2 border-[#011e41]">
+      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        {/* Logo and Title Group */}
+        <Link to="/" onClick={closeAll} className="no-underline text-white flex-shrink-1 md:flex-shrink-0">
+          <div className="flex flex-row items-center text-left">
             <img 
               src={`${import.meta.env.BASE_URL}logo.svg`}
               alt="Evidence for Justice Lab Logo" 
-              className="header-logo"
+              className="h-14 md:h-16 lg:h-20 w-auto mr-3 lg:mr-4"
             />
-            <h1 className="site-title">Justice and Artificial Intelligence Tracker</h1>
+            <h1 className="text-white font-['Source_Sans_3'] text-lg md:text-xl lg:text-2xl font-bold leading-tight max-w-[200px] md:max-w-[300px] lg:max-w-none">
+              Justice and Artificial Intelligence Tracker
+            </h1>
           </div>
         </Link>
-        <nav className="header-nav">
+        
+        {/* Navigation Links */}
+        <nav className="flex flex-row items-center justify-end gap-4 md:gap-6 lg:gap-10">
           <Link 
             to="/" 
-            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+            onClick={closeAll}
+            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
+              location.pathname === '/' ? 'underline' : ''
+            }`}
           >
             Map
           </Link>
           
+          {/* JAI-T Dropdown */}
           <div 
-            className="nav-dropdown"
-            onMouseEnter={() => setJaitDropdownOpen(true)}
-            onMouseLeave={() => setJaitDropdownOpen(false)}
+            className="relative"
+            onMouseEnter={() => setJaitOpen(true)}
+            onMouseLeave={() => setJaitOpen(false)}
           >
-            <Link 
-              to="/jai-t" 
-              className={`nav-link ${isJaiTActive ? 'active' : ''}`}
+            {/* Click to stay open / Hover to preview */}
+            <button 
+              onClick={() => setJaitOpen(!jaitOpen)}
+              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
+                isJaiTActive ? 'underline' : ''
+              } ${jaitOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
               JAI-T
-            </Link>
-            {jaitDropdownOpen && (
+            </button>
+            
+            {jaitOpen && (
+              /* The container itself now handles the "active" zone */
               <div 
-                className="dropdown-menu"
-                onMouseEnter={() => setJaitDropdownOpen(true)}
-                onMouseLeave={() => setJaitDropdownOpen(false)}
+                className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-[#011e41] min-w-[180px] shadow-xl z-[1000] rounded mt-0 pt-2 py-2 border border-white/10"
+                onMouseEnter={() => setJaitOpen(true)}
               >
-                <Link 
-                  to="/jai-t#table" 
-                  className={`dropdown-item ${location.pathname === '/jai-t' && (!location.hash || location.hash === '#table') ? 'active' : ''}`}
-                >
-                  Database
-                </Link>
-                <Link 
-                  to="/jai-t#taxonomy" 
-                  className={`dropdown-item ${location.hash === '#taxonomy' ? 'active' : ''}`}
-                >
-                  Taxonomy
-                </Link>
-                
-                <Link 
-                  to="/jai-t#methodology" 
-                  className={`dropdown-item ${location.hash === '#methodology' ? 'active' : ''}`}
-                >
-                  Methodology
-                </Link>
-                <Link 
-                  to="/jai-t#citation" 
-                  className={`dropdown-item ${location.hash === '#citation' ? 'active' : ''}`}
-                >
-                  Citation
-                </Link>
+                <Link to="/jai-t#table" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Database</Link>
+                <Link to="/jai-t#taxonomy" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Taxonomy</Link>
+                <Link to="/jai-t#methodology" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Methodology</Link>
+                <Link to="/jai-t#citation" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Citation</Link>
               </div>
             )}
           </div>
 
-          {/* Top-level Insights nav link */}
           <Link 
             to="/insights" 
-            className={`nav-link ${location.pathname === '/insights' ? 'active' : ''}`}
+            onClick={closeAll}
+            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
+              location.pathname === '/insights' ? 'underline' : ''
+            }`}
           >
             Insights
           </Link>
 
+          {/* Contact Dropdown */}
           <div 
-            className="nav-dropdown"
-            onMouseEnter={() => setContactDropdownOpen(true)}
-            onMouseLeave={() => setContactDropdownOpen(false)}
+            className="relative"
+            onMouseEnter={() => setContactOpen(true)}
+            onMouseLeave={() => setContactOpen(false)}
           >
-            <Link 
-              to="/contact/about" 
-              className={`nav-link ${isContactActive ? 'active' : ''}`}
+            <button 
+              onClick={() => setContactOpen(!contactOpen)}
+              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
+                isContactActive ? 'underline' : ''
+              } ${contactOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
               Contact
-            </Link>
-            {contactDropdownOpen && (
+            </button>
+            {contactOpen && (
               <div 
-                className="dropdown-menu"
-                onMouseEnter={() => setContactDropdownOpen(true)}
-                onMouseLeave={() => setContactDropdownOpen(false)}
+                className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-[#011e41] min-w-[180px] shadow-xl z-[1000] rounded mt-0 pt-2 py-2 border border-white/10"
+                onMouseEnter={() => setContactOpen(true)}
               >
-                <Link 
-                  to="/contact/about" 
-                  className={`dropdown-item ${location.pathname === '/contact/about' ? 'active' : ''}`}
-                >
-                  About Us
-                </Link>
-                {/* <Link 
-                  to="/contact/faq" 
-                  className={`dropdown-item ${location.pathname === '/contact/faq' ? 'active' : ''}`}
-                >
-                  FAQs
-                </Link> */}
-                <Link 
-                  to="/contact" 
-                  className={`dropdown-item ${location.pathname === '/contact' ? 'active' : ''}`}
-                >
-                  Submit an Entry
-                </Link>
+                <Link to="/contact/about" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">About Us</Link>
+                <Link to="/contact" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Submit an Entry</Link>
               </div>
             )}
           </div>

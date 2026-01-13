@@ -6,9 +6,8 @@ import Taxonomy from './Taxonomy';
 import Methodology from './Methodology';
 import Cite from './Cite';
 import DownloadModal from '../components/DownloadModal';
-import Insights from './Insights';
 import { parseCSVData } from '../utils/csvParser';
-import './JAITDatabase.css';
+import './JAITDatabase.css'; // See the CSS block below
 
 const categoryDefinitions = {
   "Back End Administration": "Supports internal operations (ex: data management, documentation).",
@@ -32,249 +31,163 @@ function JAITDatabase() {
     state: []
   });
 
-  // Extract unique states from the data
   const availableStates = useMemo(() => {
     const stateSet = new Set();
     data.forEach(row => {
-      if (row.state && row.state.trim()) {
-        stateSet.add(row.state.trim());
-      }
+      if (row.state && row.state.trim()) stateSet.add(row.state.trim());
     });
     return Array.from(stateSet).sort();
   }, [data]);
 
-  // Handle hash-based routing
   useEffect(() => {
     const hash = location.hash.replace('#', '');
-    if (hash === 'taxonomy') {
-      setViewMode('taxonomy');
-    } else if (hash === 'methodology') {
-      setViewMode('methodology');
-    } else if (hash === 'citation') {
-      setViewMode('citation');
+    if (['taxonomy', 'methodology', 'cite'].includes(hash)) {
+      setViewMode(hash);
     } else {
       setViewMode('table');
     }
   }, [location.hash]);
 
   useEffect(() => {
-    // const url = `/jait-data.csv?t=${Date.now()}`;
     const url = `${import.meta.env.BASE_URL}jait-data.csv?t=${Date.now()}`;
-    console.debug('Fetching CSV from', url);
     fetch(url, { cache: 'no-store' })
-      .then(response => {
-        console.debug('CSV fetch status', response.status);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.text();
-      })
+      .then(res => res.text())
       .then(csvText => {
-        console.debug('Loaded CSV (first 300 chars):', csvText.slice(0, 300));
-        const parsedData = parseCSVData(csvText);
-        console.debug('Parsed rows count:', parsedData.length, 'sample:', parsedData.slice(0, 2));
-        setData(parsedData);
+        setData(parseCSVData(csvText));
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error loading CSV data:', error);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   }, []);
 
   const handleFilterChange = (filterType, value) => {
-    setFilters(prev => {
-      const currentValues = prev[filterType];
-      const newValues = currentValues.includes(value)
-        ? currentValues.filter(v => v !== value)
-        : [...currentValues, value];
-      
-      return {
-        ...prev,
-        [filterType]: newValues
-      };
-    });
-  };
-
-  const handleDownloadRequest = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleTabChange = (tab) => {
-    setViewMode(tab);
+    setFilters(prev => ({
+      ...prev,
+      [filterType]: prev[filterType].includes(value)
+        ? prev[filterType].filter(v => v !== value)
+        : [...prev[filterType], value]
+    }));
   };
 
   const columns = useMemo(() => [
     {
       accessorKey: 'name',
       header: "Name",
-      cell: info => {
-        const name = info.getValue();
-        const link = info.row.original.link;
-        if (link) {
-          return (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="table-link-name">
-              <strong>{name}</strong>
-            </a>
-          );
-        }
-        return <strong>{name}</strong>;
-      },
+      cell: info => (
+        <a href={info.row.original.link} target="_blank" rel="noopener noreferrer" 
+           className="text-[#011e41] font-bold hover:underline decoration-[#5f9ae2]">
+          {info.getValue()}
+        </a>
+      ),
     },
-    {
-      accessorKey: 'city',
-      header: 'City',
-    },
-    {
-      accessorKey: 'state',
-      header: 'State',
-    },
+    { accessorKey: 'city', header: 'City' },
+    { accessorKey: 'state', header: 'State' },
     {
       accessorKey: 'domain',
       header: 'Domain',
       cell: info => {
         const domain = info.getValue();
         if (!domain || domain === 'N/A') return '-';
+        
+        // Dynamic Domain Colors
+        const colors = {
+          'Courts': 'bg-[#665825] text-white',
+          'Law Enforcement': 'bg-[#bb9f4b] text-white',
+          'Corrections': 'bg-[#d6c07e] text-[#011e41]'
+        };
+        
         return (
-          <span className={`domain-badge domain-${domain.toLowerCase().replace(/\s+/g, '-')}`}>
+          <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${colors[domain] || 'bg-gray-200 text-gray-700'}`}>
             {domain}
           </span>
         );
       },
     },
-{
-  accessorKey: 'category',
-  header: 'Category',
-  cell: info => {
-    const raw = info.getValue();
-    if (!raw) return '-';
+    {
+      accessorKey: 'category',
+      header: 'Category',
+      cell: info => {
+        const raw = info.getValue();
+        if (!raw) return '-';
+        const categories = raw.split(',').map(c => c.trim()).filter(Boolean);
 
-    const categories = raw
-      .split(',')
-      .map(c => c.trim())
-      .filter(Boolean);
-
-    return (
-      <div className="category-cell">
-        {categories.map((cat, i) => (
-          <div
-            key={i}
-            className="category-item"
-            data-tooltip={categoryDefinitions[cat] || "No definition available"}
-          >
-            {cat}
+        return (
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat, i) => (
+              <div
+                key={i}
+                className="category-tooltip-trigger relative cursor-help px-2 py-1 bg-[#d4f1f4] border border-[#0097b2] text-[#011e41] text-xs font-medium rounded"
+                data-tooltip={categoryDefinitions[cat] || "No definition available"}
+              >
+                {cat}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    );
-  }
-},
-
+        );
+      }
+    },
     {
       accessorKey: 'lastUpdated',
       header: 'Last Searched',
       cell: info => {
         const date = info.getValue();
         if (!date) return '-';
-        if (date.includes('/')) {
-          const dateParts = date.split('/');
-          if (dateParts.length === 3) {
-            const month = dateParts[0].padStart(2, '0');
-            const day = dateParts[1].padStart(2, '0');
-            const year = dateParts[2];
-            const dateObj = new Date(`${year}-${month}-${day}`);
-            return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-          }
-        }
         const dateObj = new Date(date);
-        if (!isNaN(dateObj.getTime())) {
-          return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-        }
-        return date;
+        return isNaN(dateObj.getTime()) ? date : dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
       },
     },
   ], []);
 
-  if (loading) {
-    return (
-      <div className="jait-database">
-        <div className="loading-container">
-          <p>Loading database...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (data.length === 0 && !loading) {
-    return (
-      <div className="jait-database">
-        <div className="loading-container">
-          <p>No data found. Please check that jait-data.csv is in the public folder.</p>
-          <p style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>Check the browser console for error messages.</p>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <div className="p-20 text-center font-['Source_Sans_3'] text-xl">Loading database...</div>;
 
   return (
-    <div className="jait-database">
-      <div className="jait-header-text">
-      <h1 className="jait-title">JAI-T Database</h1>
-      <h2 className="jait-subtitle">The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system. The database is composed of qualitative information found from news articles, reports, and publications, and captures instances of cities that have procured, piloted, or deployed AI-based tools over time.  
-</h2>
-      </div>
-      <DownloadModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
-      
-      <div className="jait-tabs">
-        <button
-          className={`jait-tab ${viewMode === 'table' ? 'active' : ''}`}
-          onClick={() => handleTabChange('table')}
-        >
-          Database
-        </button>
-        <button
-          className={`jait-tab ${viewMode === 'taxonomy' ? 'active' : ''}`}
-          onClick={() => handleTabChange('taxonomy')}
-        >
-          Taxonomy
-        </button>
-        <button
-          className={`jait-tab ${viewMode === 'methodology' ? 'active' : ''}`}
-          onClick={() => handleTabChange('methodology')}
-        >
-          Methodology
-        </button>
-        <button
-          className={`jait-tab ${viewMode === 'citation' ? 'active' : ''}`}
-          onClick={() => handleTabChange('citation')}
-        >
-          Citation
-        </button>
+    <div className="flex-1 bg-[#f5f5f0] min-h-[calc(100vh-200px)] font-['Source_Sans_3'] text-[#011e41]">
+      {/* Header */}
+      <div className="max-w-[1400px] mx-auto py-8 px-6 md:px-12">
+        <h1 className="text-3xl font-bold mb-2">JAI-T Database</h1>
+        <p className="text-lg leading-relaxed text-[#333]">
+          The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system.
+        </p>
       </div>
 
-      {viewMode === 'table' && (
-        <div className="main-content">
-          <FilterSidebar 
-            filters={filters} 
-            onFilterChange={handleFilterChange}
-            availableStates={availableStates}
-          />
-          <DataTable 
-            data={data} 
-            columns={columns} 
-            filters={filters}
-            onDownload={handleDownloadRequest}
-          />
-        </div>
-      )}
-      
-      {viewMode === 'taxonomy' && <Taxonomy />}
-      {viewMode === 'methodology' && <Methodology />}
-      {viewMode === 'citation' && <Cite />}
-      
+      <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Tabs */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex border-b-2 border-[#011e41]">
+        {['table', 'taxonomy', 'methodology', 'cite'].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setViewMode(tab)}
+            className={`py-4 px-4 md:px-8 text-lg md:text-xl font-medium transition-all border-b-4 -mb-[2px] capitalize ${
+              viewMode === tab ? 'text-[#011e41] border-[#0097b2] font-semibold' : 'text-gray-500 border-transparent hover:bg-black/5'
+            }`}
+          >
+            {tab === 'table' ? 'Database' : tab}
+          </button>
+        ))}
+      </div>
+
+      {/* Content Area */}
+      <div className="max-w-[1400px] mx-auto">
+        {viewMode === 'table' ? (
+          <div className="flex flex-col lg:flex-row p-4 md:p-6 gap-6">
+            <div className="w-full lg:w-[280px]">
+              <FilterSidebar filters={filters} onFilterChange={handleFilterChange} availableStates={availableStates} />
+            </div>
+            {/* iPad & Mobile Friendly Wrapper */}
+            <div className="flex-1 overflow-x-auto bg-white rounded-lg shadow-sm border border-gray-200">
+              <div className="min-w-[800px] lg:min-w-0"> 
+                <DataTable data={data} columns={columns} filters={filters} onDownload={() => setIsModalOpen(true)} />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="p-6 md:p-12 bg-white m-6 rounded-lg shadow-sm">
+             {viewMode === 'taxonomy' && <Taxonomy />}
+             {viewMode === 'methodology' && <Methodology />}
+             {viewMode === 'cite' && <Cite />}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
