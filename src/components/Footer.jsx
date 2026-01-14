@@ -89,7 +89,7 @@ function Footer() {
               to="/jai-t" 
               className="font-['Source_Sans_3'] text-base text-white no-underline transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
             >
-              JAIT
+              JAI-T
             </Link>
             <Link 
               to="/insights" 
