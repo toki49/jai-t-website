@@ -152,18 +152,20 @@ function JAITDatabase() {
       <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Tabs */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex border-b-2 border-[#011e41]">
-        {['table', 'taxonomy', 'methodology', 'cite'].map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setViewMode(tab)}
-            className={`py-4 px-4 md:px-8 text-lg md:text-xl font-medium transition-all border-b-4 -mb-[2px] capitalize ${
-              viewMode === tab ? 'text-[#011e41] border-[#0097b2] font-semibold' : 'text-gray-500 border-transparent hover:bg-black/5'
-            }`}
-          >
-            {tab === 'table' ? 'Database' : tab}
-          </button>
-        ))}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 overflow-x-auto border-b-2 border-[#011e41]">
+        <div className="flex min-w-max">
+          {['table', 'taxonomy', 'methodology', 'cite'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setViewMode(tab)}
+              className={`py-4 px-4 md:px-8 text-lg md:text-xl font-medium transition-all border-b-4 -mb-[2px] capitalize whitespace-nowrap ${
+                viewMode === tab ? 'text-[#011e41] border-[#0097b2] font-semibold' : 'text-gray-500 border-transparent hover:bg-black/5'
+              }`}
+            >
+              {tab === 'table' ? 'Database' : tab}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Content Area */}

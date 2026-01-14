@@ -10,7 +10,7 @@ function Cite() {
         </p>
         <div className="citation-header-box">
           <p className="citation-text">
-            <strong>Evidence for Justice Lab. (2025). <em>The Justice and AI Tracker (JAI-T)</em>. McCourt School of Public Policy, Georgetown University. Retrieved from https://jai-t.com/</strong>
+            <strong>Evidence for Justice Lab. (2025). <em>The Justice and AI Tracker (JAI-T)</em>. McCourt School of Public Policy, Georgetown University. Retrieved from https://www.jai-t.com/</strong>
           </p>
         </div>
       </div>

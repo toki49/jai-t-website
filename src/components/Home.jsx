@@ -73,8 +73,8 @@ function Home() {
           <p>
             JAI-T promotes transparency, enhances public understanding, and spotlights real-world justice technology deployments.
           </p>
-          <div className="max-w-5xl mx-auto text-cyan-500 text-[1.05rem] leading-relaxed space-y-3">
-            <p><strong>This is the January 2026 version of the JAI-T Tracker. Updates with new use cases and expanded details will be released over time - so stay tuned!</strong></p>
+          <div className="max-w-5xl mx-auto text-gray-800 text-[1.05rem] leading-relaxed space-y-3">
+            <p>This is the <strong>January 2026 version </strong>of the JAI-T Tracker. Updates with new use cases and expanded details will be released over time - so stay tuned!</p>
           </div>
         </div>
 
