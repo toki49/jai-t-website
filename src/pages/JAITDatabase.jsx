@@ -90,9 +90,9 @@ function JAITDatabase() {
         
         // Dynamic Domain Colors
         const colors = {
+          'Corrections': 'bg-[#d6c07e] text-[#011e41]',
           'Courts': 'bg-[#665825] text-white',
-          'Law Enforcement': 'bg-[#bb9f4b] text-white',
-          'Corrections': 'bg-[#d6c07e] text-[#011e41]'
+          'Law Enforcement': 'bg-[#bb9f4b] text-white'
         };
         
         return (
