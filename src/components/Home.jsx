@@ -60,7 +60,7 @@ function Home() {
           <p>
             The <strong>Justice and Artificial Intelligence Tracker (JAI-T)</strong> is a centralized resource that documents use cases of AI-driven technologies within the criminal justice system. Developed by the{" "}
             <a
-              href="https://mccourt.georgetown.edu/evidence-for-justice-lab/"
+              href="https://evidenceforjustice.georgetown.edu/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-gray-600"
