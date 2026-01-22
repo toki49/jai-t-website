@@ -39,7 +39,7 @@ function Header() {
           <Link 
             to="/" 
             onClick={closeAll}
-            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
+            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
               location.pathname === '/' ? 'underline' : ''
             }`}
           >
@@ -55,7 +55,7 @@ function Header() {
             {/* Click to stay open / Hover to preview */}
             <button 
               onClick={() => setJaitOpen(!jaitOpen)}
-              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
+              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
                 isJaiTActive ? 'underline' : ''
               } ${jaitOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
@@ -79,7 +79,7 @@ function Header() {
           <Link 
             to="/insights" 
             onClick={closeAll}
-            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
+            className={`font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold text-white no-underline hover:underline whitespace-nowrap ${
               location.pathname === '/insights' ? 'underline' : ''
             }`}
           >
@@ -94,7 +94,7 @@ function Header() {
           >
             <button 
               onClick={() => setContactOpen(!contactOpen)}
-              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.1rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
+              className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
                 isContactActive ? 'underline' : ''
               } ${contactOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
