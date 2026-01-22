@@ -148,6 +148,9 @@ function JAITDatabase() {
         <p className="text-lg leading-relaxed text-[#333]">
           The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system.
         </p>
+          <p className="text-lg leading-relaxed text-[#333]">
+          Please review our methodology and disclaimers for details on the criteria and parameters used to identify and include use cases.
+        </p>
       </div>
 
       <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
