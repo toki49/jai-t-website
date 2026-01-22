@@ -120,60 +120,6 @@ function Methodology() {
             </p>
           </div>
         </div>
-
-        <div style={{ marginTop: '2rem' }}></div> 
-
-        <div className="disclaimer-box">
-          <div className="step-content">
-            <h3 className="step-title">DISCLAIMERS</h3>
-            <div className="disclaimer-list">
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Geographic Scope</strong></div>
-                <div className="disclaimer-item-body">
-                  JAI-T focuses on the <a href="https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population" target="_blank" rel="noopener noreferrer" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }}>top 100 Largest U.S. cities</a>. Statewide or county-level initiatives are only included when there is clear evidence of use at the city level. For metropolitan areas with overlapping names, classifications apply strictly to the city jurisdiction, not the broader region.
-                </div>
-              </div>
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Organizational vs. Individual Use</strong></div>
-                <div className="disclaimer-item-body">
-                  The database tracks AI use within the criminal justice system regardless of whether the tool is operated by an agency as a whole or by individuals within that agency.
-                </div>
-              </div>
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Scope of Criminal Justice Use</strong></div>
-                <div className="disclaimer-item-body">
-                  Tools deployed primarily for <strong>non-criminal justice purposes</strong> (e.g., housing, transportation, or general traffic management) are excluded unless there is clear evidence they are used for crime, law enforcement, public safety, or legal enforcement purposes. In some cases, tools deployed by non-justice agencies are included when they replace or directly support traditional criminal justice functions.
-                </div>
-              </div>
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Status of Use</strong></div>
-                <div className="disclaimer-item-body">
-                  Entries may reflect <strong>proposed, piloted, or deployed tools.</strong> Inclusion does not guarantee current or ongoing use. JAI-T represents a documented footprint of AI adoption, not an exhaustive or real-time inventory.
-                </div>
-              </div>
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Defining Artificial Intelligence</strong></div>
-                <div className="disclaimer-item-body">
-Most tools are included when sources explicitly reference “artificial intelligence,” or when inclusion is based on an informed assessment of the technology’s function and common usage. However, some widely discussed technologies are included, even when AI use within those technologies may vary depending on the city, such as:<br />
-<ul style={{ marginTop: '0.5em', marginBottom: '0.5em' }}>
-  <li>Facial recognition</li>
-  <li>Gunshot detection systems</li>
-  <li>Automated license plate readers (ALPRs)</li>
-  <li>Body-worn camera footage review</li>
-  <li>Predictive policing tools</li>
-  <li>Real-time crime or intelligence centers</li>
-</ul>
-                </div>
-              </div>
-              <div className="disclaimer-item">
-                <div className="disclaimer-title"><strong>Sources and Citations</strong></div>
-                <div className="disclaimer-item-body">
-                  If a source link is no longer active, users should contact the publisher or access archived versions through the <a href="https://web.archive.org" style={{ color: '#000', textDecoration: 'underline', fontWeight: 'bold' }} target="_blank" rel="noopener noreferrer">Wayback Machine</a>.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

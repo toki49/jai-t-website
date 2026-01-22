@@ -7,6 +7,7 @@ import Home from './components/Home';
 import JAITDatabase from './pages/JAITDatabase';
 import Insights from './pages/Insights';
 import Methodology from './pages/Methodology';
+import Disclaimers from './pages/Disclaimers';
 import Contact from './pages/Contact';
 import './App.css';
 import Taxonomy from './pages/Taxonomy';

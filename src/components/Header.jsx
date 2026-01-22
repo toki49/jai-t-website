@@ -71,7 +71,8 @@ function Header() {
                 <Link to="/jai-t#table" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Database</Link>
                 <Link to="/jai-t#taxonomy" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Taxonomy</Link>
                 <Link to="/jai-t#methodology" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Methodology</Link>
-                <Link to="/jai-t#citation" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Citation</Link>
+                <Link to="/jai-t#disclaimers" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Disclaimers</Link>
+                <Link to="/jai-t#citation" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Cite</Link>
               </div>
             )}
           </div>

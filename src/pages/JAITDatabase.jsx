@@ -8,6 +8,7 @@ import Cite from './Cite';
 import DownloadModal from '../components/DownloadModal';
 import { parseCSVData } from '../utils/csvParser';
 import './JAITDatabase.css'; // See the CSS block below
+import Disclaimers from './Disclaimers';
 
 const categoryDefinitions = {
   "Back End Administration": "Supports internal operations (ex: data management, documentation).",
@@ -41,7 +42,7 @@ function JAITDatabase() {
 
   useEffect(() => {
     const hash = location.hash.replace('#', '');
-    if (['taxonomy', 'methodology', 'cite'].includes(hash)) {
+    if (['taxonomy', 'methodology', 'disclaimers','cite'].includes(hash)) {
       setViewMode(hash);
     } else {
       setViewMode('table');
@@ -154,7 +155,7 @@ function JAITDatabase() {
       {/* Tabs */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 overflow-x-auto border-b-2 border-[#011e41]">
         <div className="flex min-w-max">
-          {['table', 'taxonomy', 'methodology', 'cite'].map((tab) => (
+          {['table', 'taxonomy', 'methodology', 'disclaimers','cite'].map((tab) => (
             <button
               key={tab}
               onClick={() => setViewMode(tab)}
@@ -171,7 +172,7 @@ function JAITDatabase() {
       {/* Content Area */}
       <div className="max-w-[1400px] mx-auto">
         {viewMode === 'table' ? (
-          <div className="flex flex-col lg:flex-row p-4 md:p-6 gap-6">
+          <div className="flex flex-col lg:flex-row p-4 md:p-6 gap-6 items-start">
             <div className="w-full lg:w-[280px]">
               <FilterSidebar filters={filters} onFilterChange={handleFilterChange} availableStates={availableStates} />
             </div>
@@ -186,6 +187,7 @@ function JAITDatabase() {
           <div className="p-6 md:p-12 bg-white m-6 rounded-lg shadow-sm">
              {viewMode === 'taxonomy' && <Taxonomy />}
              {viewMode === 'methodology' && <Methodology />}
+             {viewMode === 'disclaimers' && <Disclaimers />}
              {viewMode === 'cite' && <Cite />}
           </div>
         )}

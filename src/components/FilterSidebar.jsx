@@ -52,7 +52,7 @@ function FilterSidebar({ filters, onFilterChange, availableStates = [] }) {
   ];
 
   return (
-    <aside className="w-full lg:w-[280px] p-6 lg:p-8 bg-[#f5f5f0] font-['Source_Sans_3']">
+    <aside className="w-full lg:w-[280px] pt-6 lg:pt-8 px-6 lg:px-8 bg-[#f5f5f0] font-['Source_Sans_3'] max-h-[70vh] overflow-y-auto">
       <h3 className="text-xl font-semibold mb-6 text-[#333]">Filter by</h3>
       
       {/* Categories Section */}
@@ -108,7 +108,7 @@ function FilterSidebar({ filters, onFilterChange, availableStates = [] }) {
       </div>
 
       {/* State Section */}
-      <div className="mb-6 border-b-0 pb-0">
+      <div className="mb-0 border-b-0 pb-0">
         <button 
           className="w-full flex justify-between items-center bg-none border-none py-3 px-0 font-['Source_Sans_3'] text-lg font-medium text-[#333] cursor-pointer text-left transition-colors hover:text-[#2d5016]"
           onClick={() => toggleSection('state')}
