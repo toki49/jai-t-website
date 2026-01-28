@@ -34,31 +34,30 @@ function FilterSidebar({ filters, onFilterChange, availableStates = [], availabl
   ];
 
   return (
-    <div className="w-full lg:w-[280px]">
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sticky top-6">
+    <div className="w-full lg:w-[280px] bg-[#f5f5f0]">
+      <div className="p-6">
+        <h3 className="text-base font-semibold text-[#333] mb-8">Filter by</h3>
         
         {/* Categories Section */}
-        <div className="mb-6">
+        <div className="mb-6 border-b border-[#d4d4ce] pb-6">
           <button
             onClick={() => toggleSection('categories')}
-            className="w-full flex items-center justify-between text-lg font-bold text-[#011e41] hover:text-[#0097b2] transition-colors"
+            className="w-full flex items-center justify-between text-base font-semibold text-[#333] hover:text-[#2d5016] transition-colors bg-transparent border-none p-0 cursor-pointer"
           >
             Categories
-            <span className="text-xl">{expanded.categories ? '−' : '+'}</span>
+            <span className="text-2xl text-[#999] font-light">{expanded.categories ? '−' : '+'}</span>
           </button>
           {expanded.categories && (
-            <div className="mt-3 space-y-2">
+            <div className="mt-4 space-y-3">
               {categories.map(cat => (
-                <label key={cat} className="flex items-start gap-2 cursor-pointer group">
+                <label key={cat} className="flex items-center gap-2 cursor-pointer text-sm text-[#4a4a4a] font-normal">
                   <input
                     type="checkbox"
                     checked={filters.categories.includes(cat)}
                     onChange={() => handleCheckboxChange('categories', cat)}
-                    className="mt-1 w-4 h-4 accent-[#0097b2]"
+                    className="w-4 h-4"
                   />
-                  <span className="text-sm text-[#011e41] group-hover:text-[#0097b2] transition-colors">
-                    {cat}
-                  </span>
+                  <span>{cat}</span>
                 </label>
               ))}
             </div>
@@ -66,27 +65,25 @@ function FilterSidebar({ filters, onFilterChange, availableStates = [], availabl
         </div>
 
         {/* Domain Section */}
-        <div className="mb-6">
+        <div className="mb-6 border-b border-[#d4d4ce] pb-6">
           <button
             onClick={() => toggleSection('domain')}
-            className="w-full flex items-center justify-between text-lg font-bold text-[#011e41] hover:text-[#0097b2] transition-colors"
+            className="w-full flex items-center justify-between text-base font-semibold text-[#333] hover:text-[#2d5016] transition-colors bg-transparent border-none p-0 cursor-pointer"
           >
             Domain
-            <span className="text-xl">{expanded.domain ? '−' : '+'}</span>
+            <span className="text-2xl text-[#999] font-light">{expanded.domain ? '−' : '+'}</span>
           </button>
           {expanded.domain && (
-            <div className="mt-3 space-y-2">
+            <div className="mt-4 space-y-3">
               {domains.map(domain => (
-                <label key={domain} className="flex items-start gap-2 cursor-pointer group">
+                <label key={domain} className="flex items-center gap-2 cursor-pointer text-sm text-[#4a4a4a] font-normal">
                   <input
                     type="checkbox"
                     checked={filters.domain.includes(domain)}
                     onChange={() => handleCheckboxChange('domain', domain)}
-                    className="mt-1 w-4 h-4 accent-[#0097b2]"
+                    className="w-4 h-4"
                   />
-                  <span className="text-sm text-[#011e41] group-hover:text-[#0097b2] transition-colors">
-                    {domain}
-                  </span>
+                  <span>{domain}</span>
                 </label>
               ))}
             </div>
@@ -94,32 +91,30 @@ function FilterSidebar({ filters, onFilterChange, availableStates = [], availabl
         </div>
 
         {/* State Section */}
-        <div>
+        <div className="pb-6">
           <button
             onClick={() => toggleSection('state')}
-            className="w-full flex items-center justify-between text-lg font-bold text-[#011e41] hover:text-[#0097b2] transition-colors"
+            className="w-full flex items-center justify-between text-base font-semibold text-[#333] hover:text-[#2d5016] transition-colors bg-transparent border-none p-0 cursor-pointer"
           >
             State
-            <span className="text-xl">{expanded.state ? '−' : '+'}</span>
+            <span className="text-2xl text-[#999] font-light">{expanded.state ? '−' : '+'}</span>
           </button>
           {expanded.state && (
-            <div className="mt-3 space-y-2 max-h-[300px] overflow-y-auto">
+            <div className="mt-4 space-y-3 max-h-[300px] overflow-y-auto">
               {availableStates.length > 0 ? (
                 availableStates.map(state => (
-                  <label key={state} className="flex items-start gap-2 cursor-pointer group">
+                  <label key={state} className="flex items-center gap-2 cursor-pointer text-sm text-[#4a4a4a] font-normal">
                     <input
                       type="checkbox"
                       checked={filters.state.includes(state)}
                       onChange={() => handleCheckboxChange('state', state)}
-                      className="mt-1 w-4 h-4 accent-[#0097b2]"
+                      className="w-4 h-4"
                     />
-                    <span className="text-sm text-[#011e41] group-hover:text-[#0097b2] transition-colors">
-                      {state}
-                    </span>
+                    <span>{state}</span>
                   </label>
                 ))
               ) : (
-                <p className="text-gray-500 text-sm">Loading states...</p>
+                <p className="text-[#999] text-sm">Loading states...</p>
               )}
             </div>
           )}
