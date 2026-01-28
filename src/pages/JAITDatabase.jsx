@@ -7,7 +7,7 @@ import Methodology from './Methodology';
 import Cite from './Cite';
 import DownloadModal from '../components/DownloadModal';
 import { parseCSVData } from '../utils/csvParser';
-import './JAITDatabase.css'; // See the CSS block below
+import './JAITDatabase.css';
 import Disclaimers from './Disclaimers';
 
 const categoryDefinitions = {
@@ -29,7 +29,8 @@ function JAITDatabase() {
   const [filters, setFilters] = useState({
     categories: [],
     domain: [],
-    state: []
+    state: [],
+    city: []
   });
 
   const availableStates = useMemo(() => {
@@ -38,6 +39,14 @@ function JAITDatabase() {
       if (row.state && row.state.trim()) stateSet.add(row.state.trim());
     });
     return Array.from(stateSet).sort();
+  }, [data]);
+
+  const availableCities = useMemo(() => {
+    const citySet = new Set();
+    data.forEach(row => {
+      if (row.city && row.city.trim()) citySet.add(row.city.trim());
+    });
+    return Array.from(citySet).sort();
   }, [data]);
 
   useEffect(() => {
@@ -60,6 +69,41 @@ function JAITDatabase() {
       .catch(() => setLoading(false));
   }, []);
 
+  // NEW: Read query params on mount and apply filters
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const city = params.get('city');
+    const state = params.get('state');
+    const domain = params.get('domain');
+
+    const newFilters = {
+      categories: [],
+      domain: [],
+      state: [],
+      city: []
+    };
+
+    if (city) {
+      newFilters.city = [decodeURIComponent(city)];
+    }
+    if (state) {
+      newFilters.state = [decodeURIComponent(state)];
+    }
+    if (domain) {
+      newFilters.domain = [decodeURIComponent(domain)];
+    }
+
+    setFilters(newFilters);
+
+    // Scroll to table on load
+    setTimeout(() => {
+      const tableElement = document.getElementById('database-table');
+      if (tableElement) {
+        tableElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  }, [location.search]);
+
   const handleFilterChange = (filterType, value) => {
     setFilters(prev => ({
       ...prev,
@@ -68,6 +112,36 @@ function JAITDatabase() {
         : [...prev[filterType], value]
     }));
   };
+
+  const filteredData = useMemo(() => {
+    return data.filter(row => {
+      // Filter by state
+      if (filters.state.length > 0 && !filters.state.includes(row.state)) {
+        return false;
+      }
+
+      // Filter by domain
+      if (filters.domain.length > 0 && !filters.domain.includes(row.domain)) {
+        return false;
+      }
+
+      // Filter by category
+      if (filters.categories.length > 0) {
+        const rowCategories = row.category ? row.category.split(',').map(c => c.trim()) : [];
+        const hasMatchingCategory = filters.categories.some(cat => rowCategories.includes(cat));
+        if (!hasMatchingCategory) {
+          return false;
+        }
+      }
+
+      // Filter by city
+      if (filters.city.length > 0 && !filters.city.includes(row.city)) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [data, filters]);
 
   const columns = useMemo(() => [
     {
@@ -89,7 +163,6 @@ function JAITDatabase() {
         const domain = info.getValue();
         if (!domain || domain === 'N/A') return '-';
         
-        // Dynamic Domain Colors
         const colors = {
           'Corrections': 'bg-[#d6c07e] text-[#011e41]',
           'Courts': 'bg-[#665825] text-white',
@@ -148,7 +221,7 @@ function JAITDatabase() {
         <p className="text-lg leading-relaxed text-[#333]">
           The JAI-T is a database that can be used to investigate the varying integrations of artificial intelligence tools within the criminal justice system.
         </p>
-          <p className="text-lg leading-relaxed text-[#333]">
+        <p className="text-lg leading-relaxed text-[#333]">
           Please review our methodology and disclaimers for details on the criteria and parameters used to identify and include use cases.
         </p>
       </div>
@@ -175,14 +248,19 @@ function JAITDatabase() {
       {/* Content Area */}
       <div className="max-w-[1400px] mx-auto">
         {viewMode === 'table' ? (
-          <div className="flex flex-col lg:flex-row p-4 md:p-6 gap-6 items-start">
+          <div className="flex flex-col lg:flex-row p-4 md:p-6 gap-6 items-start" id="database-table">
             <div className="w-full lg:w-[280px]">
-              <FilterSidebar filters={filters} onFilterChange={handleFilterChange} availableStates={availableStates} />
+              <FilterSidebar 
+                filters={filters} 
+                onFilterChange={handleFilterChange} 
+                availableStates={availableStates}
+                availableCities={availableCities}
+              />
             </div>
             {/* iPad & Mobile Friendly Wrapper */}
             <div className="flex-1 overflow-x-auto bg-white rounded-lg shadow-sm border border-gray-200">
               <div className="min-w-[800px] lg:min-w-0"> 
-                <DataTable data={data} columns={columns} filters={filters} onDownload={() => setIsModalOpen(true)} />
+                <DataTable data={filteredData} columns={columns} filters={filters} onDownload={() => setIsModalOpen(true)} />
               </div>
             </div>
           </div>
