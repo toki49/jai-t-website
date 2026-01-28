@@ -52,23 +52,25 @@ function Header() {
             onMouseEnter={() => setJaitOpen(true)}
             onMouseLeave={() => setJaitOpen(false)}
           >
-            {/* Click to stay open / Hover to preview */}
-            <button 
-              onClick={() => setJaitOpen(!jaitOpen)}
+            <Link 
+              to="/jai-t#table"
+              onClick={() => {
+                setJaitOpen(false);
+                closeAll();
+              }}
               className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
                 isJaiTActive ? 'underline' : ''
               } ${jaitOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
-              JAI-T
-            </button>
+              Database
+            </Link>
             
             {jaitOpen && (
-              /* The container itself now handles the "active" zone */
               <div 
                 className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-[#011e41] min-w-[180px] shadow-xl z-[1000] rounded mt-0 pt-2 py-2 border border-white/10"
                 onMouseEnter={() => setJaitOpen(true)}
               >
-                <Link to="/jai-t#table" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Database</Link>
+                <Link to="/jai-t#table" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Table</Link>
                 <Link to="/jai-t#taxonomy" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Taxonomy</Link>
                 <Link to="/jai-t#methodology" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Methodology</Link>
                 <Link to="/jai-t#disclaimers" onClick={closeAll} className="block py-2 px-4 hover:bg-[#0097b2] text-white no-underline transition-colors text-sm md:text-base">Disclaimers</Link>
@@ -93,14 +95,18 @@ function Header() {
             onMouseEnter={() => setContactOpen(true)}
             onMouseLeave={() => setContactOpen(false)}
           >
-            <button 
-              onClick={() => setContactOpen(!contactOpen)}
+            <Link 
+              to="/contact"
+              onClick={() => {
+                setContactOpen(false);
+                closeAll();
+              }}
               className={`bg-transparent border-none cursor-pointer p-0 font-['Source_Sans_3'] text-sm md:text-base lg:text-[1.2rem] font-bold no-underline hover:underline transition-colors whitespace-nowrap ${
                 isContactActive ? 'underline' : ''
               } ${contactOpen ? 'text-[#0097b2]' : 'text-white'}`}
             >
               Contact
-            </button>
+            </Link>
             {contactOpen && (
               <div 
                 className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-[#011e41] min-w-[180px] shadow-xl z-[1000] rounded mt-0 pt-2 py-2 border border-white/10"
