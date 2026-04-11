@@ -59,7 +59,7 @@ function JAITDatabase() {
   }, [location.hash]);
 
   useEffect(() => {
-    const url = `${import.meta.env.BASE_URL}jait-data.csv?t=${Date.now()}`;
+    const url = `${import.meta.env.BASE_URL}jait-data-2.csv?t=${Date.now()}`;
     fetch(url, { cache: 'no-store' })
       .then(res => res.text())
       .then(csvText => {

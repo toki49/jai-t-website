@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Papa from 'papaparse';
 import './DownloadModal.css';
 
 // Initialize EmailJS here
@@ -60,7 +61,6 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
       'TuBuPBcdF9zZd2Haw'
     ).then(() => {
       // Send data to Google Sheets via Apps Script Web App
-      e.preventDefault();
       fetch('https://script.google.com/macros/s/AKfycbxvWB_Kr4-RiSLOOrHQOxsN44Kqd3l4Ft8Pa4BizTdUsn_ab8J4QaT6Tgb6zG23mXB7/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -75,7 +75,48 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
       .then(data => console.log(data))
       .catch(err => console.error(err)); 
 
-      alert('Thank you for showing interest in JAI-T! We will send you the jait-data.csv shortly.');
+      // Fetch the CSV, transform it, and trigger download
+      const csvUrl = `${import.meta.env.BASE_URL}jait-data-2.csv?t=${Date.now()}`;
+      fetch(csvUrl)
+        .then(res => res.text())
+        .then(csvText => {
+          const parsed = Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            transformHeader: (header) => header.trim(),
+          });
+
+          const downloadRows = parsed.data.map(row => {
+            const categories = [
+              row['Category 1'],
+              row['Category 2'],
+              row['Category 3']
+            ].filter(Boolean).join(', ');
+
+            return {
+              Name: (row['Type of Artificial Intelligence'] || '').trim(),
+              City: row['City'] || '',
+              State: row['State'] || '',
+              Domain: row['Domain'] || '',
+              Category: categories || '',
+              'Last Searched': row['Date Searched'] || '',
+              Link: row['Link'] || ''
+            };
+          }).filter(row => row.Name && row.Name.trim() !== '');
+
+          const csvOutput = Papa.unparse(downloadRows);
+          const blob = new Blob([csvOutput], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'jai-t_database_download.csv';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        })
+        .catch(err => console.error('CSV download error:', err));
+
       // Reset form
       setFormData({ name: '', email: '', organization: '' });
       setErrors({});
@@ -156,7 +197,7 @@ function DownloadModal({ isOpen, onClose, onDownload }) {
               Cancel
             </button>
             <button type="submit" className="btn-download">
-              Submit Email
+              Download CSV
             </button>
           </div>
         </form>
