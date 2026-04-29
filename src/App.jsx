@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import JAITDatabase from './pages/JAITDatabase';
 import Insights from './pages/Insights';
+import News from './pages/News';
 import Methodology from './pages/Methodology';
 import Disclaimers from './pages/Disclaimers';
 import Contact from './pages/Contact';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/jai-t" element={<JAITDatabase />} />
         <Route path="/insights" element={<Insights />} />
+        <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact/about" element={<Contact />} />
         <Route path="/contact/faq" element={<Contact />} />
