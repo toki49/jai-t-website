@@ -265,7 +265,7 @@ function JAITDatabase() {
             </div>
           </div>
         ) : (
-          <div className="p-6 md:p-12 bg-white m-6 rounded-lg shadow-sm">
+          <div className="max-w-[1000px] mx-auto my-10 px-6">
              {viewMode === 'taxonomy' && <Taxonomy />}
              {viewMode === 'methodology' && <Methodology />}
              {viewMode === 'disclaimers' && <Disclaimers />}

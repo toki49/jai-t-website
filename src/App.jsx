@@ -8,8 +8,8 @@ import JAITDatabase from './pages/JAITDatabase';
 import Insights from './pages/Insights';
 import News from './pages/News';
 import Methodology from './pages/Methodology';
-import Disclaimers from './pages/Disclaimers';
 import Contact from './pages/Contact';
+import TermsOfUse from './pages/TermsOfUse';
 import './App.css';
 import Taxonomy from './pages/Taxonomy';
 
@@ -22,6 +22,7 @@ function App() {
         <Route path="/jai-t" element={<JAITDatabase />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/news" element={<News />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact/about" element={<Contact />} />
         <Route path="/contact/faq" element={<Contact />} />

@@ -119,7 +119,7 @@ function Taxonomy() {
             </div>
           </div>
           <div className="font-['Source_Sans_3',sans-serif] text-base md:text-lg text-[#333] leading-relaxed">
-            Interfacing with the public to assist them with their individual matters related to navigating the criminal justice system, often using artificial intelligence to act as a personal aid to the user.
+            Interfacing with the public on their individual matters related to navigating the criminal justice system, often using artificial intelligence to provide information to the user.
             <div className="mt-3 text-base md:text-lg text-[#555] italic">
               Examples: jury chatbots, language translation or notifying clients
             </div>
